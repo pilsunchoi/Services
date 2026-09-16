@@ -17,3 +17,6 @@ logs/*
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# 연구 산출물 중 중간 덤프는 올리지 않는다. 본문이 인용하는 stats.json과 그림만 남긴다.
+research/**/out/*.csv

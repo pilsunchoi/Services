@@ -1,0 +1,932 @@
+{
+  "world": {
+    "1995": {
+      "svc": null,
+      "goods": 4646497,
+      "goods_rx": 4605444,
+      "share": null
+    },
+    "1996": {
+      "svc": null,
+      "goods": 4895300,
+      "goods_rx": 4849494,
+      "share": null
+    },
+    "1997": {
+      "svc": null,
+      "goods": 5089954,
+      "goods_rx": 5037807,
+      "share": null
+    },
+    "1998": {
+      "svc": null,
+      "goods": 4998387,
+      "goods_rx": 4945190,
+      "share": null
+    },
+    "1999": {
+      "svc": null,
+      "goods": 5534610,
+      "goods_rx": 5473940,
+      "share": null
+    },
+    "2000": {
+      "svc": null,
+      "goods": 6372010,
+      "goods_rx": 6293959,
+      "share": null
+    },
+    "2001": {
+      "svc": null,
+      "goods": 6149766,
+      "goods_rx": 6072868,
+      "share": null
+    },
+    "2002": {
+      "svc": null,
+      "goods": 6456777,
+      "goods_rx": 6362584,
+      "share": null
+    },
+    "2003": {
+      "svc": null,
+      "goods": 7528421,
+      "goods_rx": 7409855,
+      "share": null
+    },
+    "2004": {
+      "svc": null,
+      "goods": 9171286,
+      "goods_rx": 9020056,
+      "share": null
+    },
+    "2005": {
+      "svc": 2673872,
+      "goods": 10368480,
+      "goods_rx": 10201059,
+      "share": 20.5
+    },
+    "2006": {
+      "svc": 3019893,
+      "goods": 11976400,
+      "goods_rx": 11786994,
+      "share": 20.1
+    },
+    "2007": {
+      "svc": 3584435,
+      "goods": 13780097,
+      "goods_rx": 13561656,
+      "share": 20.6
+    },
+    "2008": {
+      "svc": 4050252,
+      "goods": 15957912,
+      "goods_rx": 15705750,
+      "share": 20.2
+    },
+    "2009": {
+      "svc": 3647485,
+      "goods": 12362289,
+      "goods_rx": 12128406,
+      "share": 22.8
+    },
+    "2010": {
+      "svc": 3943219,
+      "goods": 14938306,
+      "goods_rx": 14646682,
+      "share": 20.9
+    },
+    "2011": {
+      "svc": 4412469,
+      "goods": 17933392,
+      "goods_rx": 17601880,
+      "share": 19.7
+    },
+    "2012": {
+      "svc": 4542515,
+      "goods": 18119905,
+      "goods_rx": 17763596,
+      "share": 20.0
+    },
+    "2013": {
+      "svc": 4826579,
+      "goods": 18490496,
+      "goods_rx": 18101690,
+      "share": 20.7
+    },
+    "2014": {
+      "svc": 5224072,
+      "goods": 18565252,
+      "goods_rx": 18160317,
+      "share": 22.0
+    },
+    "2015": {
+      "svc": 5012188,
+      "goods": 16238616,
+      "goods_rx": 15818886,
+      "share": 23.6
+    },
+    "2016": {
+      "svc": 5080076,
+      "goods": 15762636,
+      "goods_rx": 15338042,
+      "share": 24.4
+    },
+    "2017": {
+      "svc": 5513533,
+      "goods": 17386622,
+      "goods_rx": 16908981,
+      "share": 24.1
+    },
+    "2018": {
+      "svc": 6021335,
+      "goods": 19143200,
+      "goods_rx": 18617913,
+      "share": 23.9
+    },
+    "2019": {
+      "svc": 6291480,
+      "goods": 18636029,
+      "goods_rx": 18135843,
+      "share": 25.2
+    },
+    "2020": {
+      "svc": 5217419,
+      "goods": 17311867,
+      "goods_rx": 16852915,
+      "share": 23.2
+    },
+    "2021": {
+      "svc": 6127604,
+      "goods": 21831869,
+      "goods_rx": 21272116,
+      "share": 21.9
+    },
+    "2022": {
+      "svc": 7081037,
+      "goods": 24557340,
+      "goods_rx": 23986876,
+      "share": 22.4
+    },
+    "2023": {
+      "svc": 7738007,
+      "goods": 23335127,
+      "goods_rx": 22751324,
+      "share": 24.9
+    },
+    "2024": {
+      "svc": 8475072,
+      "goods": 23583364,
+      "goods_rx": 22945336,
+      "share": 26.4
+    }
+  },
+  "items": {
+    "SA": {
+      "2005": 2.5,
+      "2019": 2.4,
+      "2020": 2.7,
+      "2024": 2.3
+    },
+    "SB": {
+      "2005": 1.1,
+      "2019": 1.8,
+      "2020": 1.8,
+      "2024": 1.7
+    },
+    "SC": {
+      "2005": 22.9,
+      "2019": 17.6,
+      "2020": 17.8,
+      "2024": 18.4
+    },
+    "SD": {
+      "2005": 25.8,
+      "2019": 22.9,
+      "2020": 10.8,
+      "2024": 20.2
+    },
+    "SE": {
+      "2005": 1.8,
+      "2019": 1.7,
+      "2020": 1.8,
+      "2024": 1.5
+    },
+    "SF": {
+      "2005": 3.2,
+      "2019": 2.9,
+      "2020": 3.7,
+      "2024": 3.5
+    },
+    "SG": {
+      "2005": 6.8,
+      "2019": 6.9,
+      "2020": 8.8,
+      "2024": 7.3
+    },
+    "SH": {
+      "2005": 6.9,
+      "2019": 7.8,
+      "2020": 8.6,
+      "2024": 7.2
+    },
+    "SI": {
+      "2005": 5.6,
+      "2019": 8.8,
+      "2020": 11.5,
+      "2024": 10.8
+    },
+    "SJ": {
+      "2005": 19.3,
+      "2019": 24.1,
+      "2020": 29.0,
+      "2024": 24.3
+    },
+    "SK": {
+      "2005": 1.3,
+      "2019": 1.6,
+      "2020": 1.8,
+      "2024": 1.6
+    },
+    "SL": {
+      "2005": 2.7,
+      "2019": 1.6,
+      "2020": 1.8,
+      "2024": 1.3
+    }
+  },
+  "items_level_2024": {
+    "SJ": 2057000,
+    "SD": 1709966,
+    "SC": 1563423,
+    "SI": 914019,
+    "SG": 618994,
+    "SH": 607136,
+    "SF": 295833,
+    "SA": 195808,
+    "SB": 143083,
+    "SK": 138311,
+    "SE": 124450,
+    "SL": 107048
+  },
+  "digital_proxy": {
+    "2005": 43.2,
+    "2006": 44.3,
+    "2007": 44.9,
+    "2008": 45.2,
+    "2009": 47.6,
+    "2010": 46.5,
+    "2011": 47.0,
+    "2012": 46.9,
+    "2013": 47.6,
+    "2014": 48.7,
+    "2015": 49.7,
+    "2016": 50.7,
+    "2017": 50.6,
+    "2018": 50.6,
+    "2019": 52.1,
+    "2020": 63.4,
+    "2021": 61.3,
+    "2022": 54.8,
+    "2023": 54.7,
+    "2024": 54.6
+  },
+  "coverage": {
+    "2005": {
+      "rows": 1.8,
+      "value": 23.0
+    },
+    "2006": {
+      "rows": 2.2,
+      "value": 23.8
+    },
+    "2007": {
+      "rows": 2.3,
+      "value": 23.1
+    },
+    "2008": {
+      "rows": 3.1,
+      "value": 26.4
+    },
+    "2009": {
+      "rows": 3.6,
+      "value": 26.5
+    },
+    "2010": {
+      "rows": 11.9,
+      "value": 29.4
+    },
+    "2011": {
+      "rows": 12.5,
+      "value": 30.5
+    },
+    "2012": {
+      "rows": 13.1,
+      "value": 30.9
+    },
+    "2013": {
+      "rows": 14.9,
+      "value": 32.1
+    },
+    "2014": {
+      "rows": 15.1,
+      "value": 32.5
+    },
+    "2015": {
+      "rows": 15.8,
+      "value": 33.3
+    },
+    "2016": {
+      "rows": 15.6,
+      "value": 33.2
+    },
+    "2017": {
+      "rows": 16.4,
+      "value": 32.1
+    },
+    "2018": {
+      "rows": 16.7,
+      "value": 32.6
+    },
+    "2019": {
+      "rows": 16.7,
+      "value": 32.5
+    },
+    "2020": {
+      "rows": 16.9,
+      "value": 32.3
+    },
+    "2021": {
+      "rows": 16.9,
+      "value": 31.8
+    },
+    "2022": {
+      "rows": 16.9,
+      "value": 32.0
+    },
+    "2023": {
+      "rows": 17.1,
+      "value": 31.9
+    },
+    "2024": {
+      "rows": 5.1,
+      "value": 25.8
+    }
+  },
+  "methodology": {
+    "2005": {
+      "estimate": 54.9,
+      "model": 18.7,
+      "reported": 26.4
+    },
+    "2015": {
+      "estimate": 27.5,
+      "model": 22.0,
+      "reported": 50.5
+    },
+    "2019": {
+      "estimate": 27.8,
+      "model": 22.4,
+      "reported": 49.8
+    },
+    "2024": {
+      "estimate": 40.1,
+      "model": 22.3,
+      "reported": 37.6
+    }
+  },
+  "methodology_rows": {
+    "2005": {
+      "estimate": 19.9,
+      "model": 79.0,
+      "reported": 1.1
+    },
+    "2015": {
+      "estimate": 7.0,
+      "model": 79.2,
+      "reported": 13.8
+    },
+    "2019": {
+      "estimate": 6.3,
+      "model": 79.2,
+      "reported": 14.5
+    },
+    "2024": {
+      "estimate": 16.8,
+      "model": 79.2,
+      "reported": 4.0
+    }
+  },
+  "reporters_top20_2019": [
+    {
+      "code": "USA",
+      "name": "United States",
+      "pct_reported": 94.0,
+      "v": 945160
+    },
+    {
+      "code": "GBR",
+      "name": "United Kingdom",
+      "pct_reported": 33.0,
+      "v": 438705
+    },
+    {
+      "code": "DEU",
+      "name": "Germany",
+      "pct_reported": 68.5,
+      "v": 372001
+    },
+    {
+      "code": "FRA",
+      "name": "France",
+      "pct_reported": 82.5,
+      "v": 265495
+    },
+    {
+      "code": "NLD",
+      "name": "Netherlands",
+      "pct_reported": 96.0,
+      "v": 260400
+    },
+    {
+      "code": "CHN",
+      "name": "China (People’s Republic of)",
+      "pct_reported": 0.0,
+      "v": 245780
+    },
+    {
+      "code": "IRL",
+      "name": "Ireland",
+      "pct_reported": 55.5,
+      "v": 242092
+    },
+    {
+      "code": "SGP",
+      "name": "Singapore",
+      "pct_reported": 15.5,
+      "v": 196506
+    },
+    {
+      "code": "JPN",
+      "name": "Japan",
+      "pct_reported": 17.0,
+      "v": 194387
+    },
+    {
+      "code": "BMU",
+      "name": "Bermuda",
+      "pct_reported": 0.0,
+      "v": 166393
+    },
+    {
+      "code": "ESP",
+      "name": "Spain",
+      "pct_reported": 87.5,
+      "v": 156532
+    },
+    {
+      "code": "HKG",
+      "name": "Hong Kong (China)",
+      "pct_reported": 19.0,
+      "v": 153327
+    },
+    {
+      "code": "IND",
+      "name": "India",
+      "pct_reported": 0.0,
+      "v": 151721
+    },
+    {
+      "code": "CHE",
+      "name": "Switzerland",
+      "pct_reported": 19.5,
+      "v": 148397
+    },
+    {
+      "code": "ITA",
+      "name": "Italy",
+      "pct_reported": 99.5,
+      "v": 130162
+    },
+    {
+      "code": "BEL",
+      "name": "Belgium",
+      "pct_reported": 95.5,
+      "v": 106749
+    },
+    {
+      "code": "CAN",
+      "name": "Canada",
+      "pct_reported": 29.0,
+      "v": 105041
+    },
+    {
+      "code": "LUX",
+      "name": "Luxembourg",
+      "pct_reported": 87.0,
+      "v": 89982
+    },
+    {
+      "code": "KOR",
+      "name": "Korea",
+      "pct_reported": 1.5,
+      "v": 89096
+    },
+    {
+      "code": "SWE",
+      "name": "Sweden",
+      "pct_reported": 99.5,
+      "v": 78193
+    }
+  ],
+  "reporters_any_2019": {
+    "n_reporters": 200,
+    "n_with_any": 52,
+    "n_over_half": 32
+  },
+  "asymmetry": {
+    "n_pairs_all_years": 22947,
+    "n_pairs_2019": 1719,
+    "median_pct_2019": 40.4,
+    "q25_2019": 18.3,
+    "q75_2019": 76.8,
+    "over_25pct_2019": 67.3,
+    "over_50pct_2019": 42.5,
+    "n_directed_cells_2019": 40000
+  },
+  "korea_total": {
+    "2005": {
+      "IMP": {
+        "rep": 59522,
+        "bal": 48247
+      }
+    },
+    "2019": {
+      "IMP": {
+        "rep": 130684,
+        "bal": 111578
+      }
+    },
+    "2023": {
+      "IMP": {
+        "rep": 152490,
+        "bal": 130499
+      }
+    },
+    "2024": {
+      "IMP": {
+        "rep": 162654,
+        "bal": 142584
+      }
+    }
+  },
+  "korea_series": {
+    "2005": {
+      "exp_bal": 40996,
+      "imp_bal": 48247,
+      "exp_rep": 50538
+    },
+    "2006": {
+      "exp_bal": 49243,
+      "imp_bal": 55567,
+      "exp_rep": 57012
+    },
+    "2007": {
+      "exp_bal": 55069,
+      "imp_bal": 68036,
+      "exp_rep": 71413
+    },
+    "2008": {
+      "exp_bal": 66928,
+      "imp_bal": 77116,
+      "exp_rep": 91045
+    },
+    "2009": {
+      "exp_bal": 55471,
+      "imp_bal": 66091,
+      "exp_rep": 72541
+    },
+    "2010": {
+      "exp_bal": 66709,
+      "imp_bal": 76400,
+      "exp_rep": 82949
+    },
+    "2011": {
+      "exp_bal": 69876,
+      "imp_bal": 83081,
+      "exp_rep": 90560
+    },
+    "2012": {
+      "exp_bal": 77453,
+      "imp_bal": 87175,
+      "exp_rep": 103134
+    },
+    "2013": {
+      "exp_bal": 79897,
+      "imp_bal": 91286,
+      "exp_rep": 103324
+    },
+    "2014": {
+      "exp_bal": 88956,
+      "imp_bal": 95931,
+      "exp_rep": 111902
+    },
+    "2015": {
+      "exp_bal": 81538,
+      "imp_bal": 93847,
+      "exp_rep": 97499
+    },
+    "2016": {
+      "exp_bal": 80834,
+      "imp_bal": 94971,
+      "exp_rep": 94809
+    },
+    "2017": {
+      "exp_bal": 78840,
+      "imp_bal": 105850,
+      "exp_rep": 89701
+    },
+    "2018": {
+      "exp_bal": 88355,
+      "imp_bal": 112403,
+      "exp_rep": 103678
+    },
+    "2019": {
+      "exp_bal": 89096,
+      "imp_bal": 111578,
+      "exp_rep": 103839
+    },
+    "2020": {
+      "exp_bal": 74143,
+      "imp_bal": 88480,
+      "exp_rep": 89596
+    },
+    "2021": {
+      "exp_bal": 95124,
+      "imp_bal": 103935,
+      "exp_rep": 119948
+    },
+    "2022": {
+      "exp_bal": 105958,
+      "imp_bal": 120561,
+      "exp_rep": 131637
+    },
+    "2023": {
+      "exp_bal": 107385,
+      "imp_bal": 130499,
+      "exp_rep": 125666
+    },
+    "2024": {
+      "exp_bal": 118185,
+      "imp_bal": 142584,
+      "exp_rep": 138953
+    }
+  },
+  "korea_partners_2024": [
+    {
+      "code": "USA",
+      "name": "United States",
+      "v": 22043,
+      "method": "R_OECD"
+    },
+    {
+      "code": "CHN",
+      "name": "China (People’s Republic of)",
+      "v": 19449,
+      "method": "R_OECD"
+    },
+    {
+      "code": "JPN",
+      "name": "Japan",
+      "v": 7880,
+      "method": "R_OECD"
+    },
+    {
+      "code": "SGP",
+      "name": "Singapore",
+      "v": 7106,
+      "method": "M8.2"
+    },
+    {
+      "code": "HKG",
+      "name": "Hong Kong (China)",
+      "v": 5386,
+      "method": "M8.2"
+    },
+    {
+      "code": "DEU",
+      "name": "Germany",
+      "v": 5173,
+      "method": "M8.2"
+    },
+    {
+      "code": "IND",
+      "name": "India",
+      "v": 4292,
+      "method": "M8.2"
+    },
+    {
+      "code": "GBR",
+      "name": "United Kingdom",
+      "v": 3153,
+      "method": "M8.2"
+    },
+    {
+      "code": "TWN",
+      "name": "Chinese Taipei",
+      "v": 2678,
+      "method": "M8.2"
+    },
+    {
+      "code": "AUS",
+      "name": "Australia",
+      "v": 2301,
+      "method": "M8.2"
+    }
+  ],
+  "korea_top10_share_2024": 67.2,
+  "korea_items_2024": [
+    {
+      "code": "SC",
+      "name": "Transport",
+      "v": 39776,
+      "share": 33.7
+    },
+    {
+      "code": "SJ",
+      "name": "Other business services",
+      "v": 24589,
+      "share": 20.8
+    },
+    {
+      "code": "SD",
+      "name": "Travel",
+      "v": 18232,
+      "share": 15.4
+    },
+    {
+      "code": "SH",
+      "name": "Charges for the use of intellectual property n.i.e.",
+      "v": 7942,
+      "share": 6.7
+    },
+    {
+      "code": "SI",
+      "name": "Telecommunications, computer, and information services",
+      "v": 7802,
+      "share": 6.6
+    },
+    {
+      "code": "SE",
+      "name": "Construction",
+      "v": 3829,
+      "share": 3.2
+    },
+    {
+      "code": "SG",
+      "name": "Financial services",
+      "v": 3779,
+      "share": 3.2
+    },
+    {
+      "code": "SL",
+      "name": "Government goods and services n.i.e.",
+      "v": 3365,
+      "share": 2.8
+    },
+    {
+      "code": "SA",
+      "name": "Manufacturing services on physical inputs owned by others",
+      "v": 3096,
+      "share": 2.6
+    },
+    {
+      "code": "SK",
+      "name": "Personal, cultural, and recreational services",
+      "v": 2939,
+      "share": 2.5
+    },
+    {
+      "code": "SF",
+      "name": "Insurance and pension services",
+      "v": 1792,
+      "share": 1.5
+    },
+    {
+      "code": "SB",
+      "name": "Maintenance and repair services n.i.e.",
+      "v": 1045,
+      "share": 0.9
+    }
+  ],
+  "korea_svc_share": {
+    "2005": 12.3,
+    "2006": 12.7,
+    "2007": 12.6,
+    "2008": 13.5,
+    "2009": 13.0,
+    "2010": 12.4,
+    "2011": 11.2,
+    "2012": 12.2,
+    "2013": 12.3,
+    "2014": 13.2,
+    "2015": 13.3,
+    "2016": 13.7,
+    "2017": 11.9,
+    "2018": 12.6,
+    "2019": 13.7,
+    "2020": 12.1,
+    "2021": 12.4,
+    "2022": 12.8,
+    "2023": 14.0,
+    "2024": 14.1
+  },
+  "concentration_2024": {
+    "n_economies": 200,
+    "top10_share": 54.3,
+    "top30_share": 82.5
+  },
+  "top_exporters_2024": [
+    {
+      "code": "USA",
+      "name": "United States",
+      "v": 1296726
+    },
+    {
+      "code": "GBR",
+      "name": "United Kingdom",
+      "v": 613493
+    },
+    {
+      "code": "DEU",
+      "name": "Germany",
+      "v": 464535
+    },
+    {
+      "code": "IRL",
+      "name": "Ireland",
+      "v": 420872
+    },
+    {
+      "code": "CHN",
+      "name": "China (People’s Republic of)",
+      "v": 357725
+    },
+    {
+      "code": "FRA",
+      "name": "France",
+      "v": 353906
+    },
+    {
+      "code": "SGP",
+      "name": "Singapore",
+      "v": 330554
+    },
+    {
+      "code": "NLD",
+      "name": "Netherlands",
+      "v": 301374
+    },
+    {
+      "code": "IND",
+      "name": "India",
+      "v": 248143
+    },
+    {
+      "code": "JPN",
+      "name": "Japan",
+      "v": 218283
+    },
+    {
+      "code": "ESP",
+      "name": "Spain",
+      "v": 212222
+    },
+    {
+      "code": "CHE",
+      "name": "Switzerland",
+      "v": 199173
+    },
+    {
+      "code": "HKG",
+      "name": "Hong Kong (China)",
+      "v": 198422
+    },
+    {
+      "code": "ITA",
+      "name": "Italy",
+      "v": 166467
+    },
+    {
+      "code": "CAN",
+      "name": "Canada",
+      "v": 139966
+    }
+  ],
+  "korea_rank_2024": 19,
+  "pairs_2024": {
+    "n": 28765,
+    "corr_log": 0.793,
+    "median_ratio": 1.84
+  }
+}
