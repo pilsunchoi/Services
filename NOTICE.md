@@ -11,6 +11,8 @@
 | BIMTS — 균형 상품 교역 통계 (HS2017 2단위, CPA 2.1) | OECD | 같음 |
 | 코드 체계 `CL_AREA` · `CL_PRODUCT_HS2017` · `CL_PRODUCT_CPA_2_1` | OECD SDMX | 같음 |
 | 방법론 문서 (BaTIS · BIMTS 기술 문서) | OECD · WTO | 같음. `data/external/`에 원문 보존 |
+| UN 총회 이념점수 (연구 2의 블록 정의) | Bailey, Strezhnev & Voeten, 하버드 데이터버스 doi:10.7910/DVN/LEJUQZ | 데이터버스 이용조건 — 인용 시 Bailey et al.(2017) 명시. `out/blocs.csv`의 이념점수 평균은 그 파생값 |
+| BACI (연구 2의 상품 대조 계열) | CEPII | Etalab Open Licence 2.0 — **출처표시 의무**. 이 저장소는 원자료를 담지 않고 집계 결과만 싣는다 |
 
 **BaTIS는 OECD와 WTO의 공동 산출물이므로 인용할 때 양쪽을 함께 밝힌다.**
 

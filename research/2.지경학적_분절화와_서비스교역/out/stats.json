@@ -1,0 +1,1149 @@
+{
+  "panel": {
+    "n_pairs": 9196,
+    "src_x": 5297,
+    "src_m": 3862,
+    "src_mixed": 37,
+    "n_economies": 201,
+    "usa_chn_in": true,
+    "svc_cover_2019": 82.3,
+    "svc_cover_2023": 83.8,
+    "goods_cover_2019": 75.8,
+    "goods_cover_2023": 74.1
+  },
+  "blocs": {
+    "D1": {
+      "NON": 95,
+      "US": 58,
+      "CN": 51
+    },
+    "D2": {
+      "NON": 96,
+      "US": 57,
+      "CN": 50
+    },
+    "D3": {
+      "NON": 147,
+      "US": 56,
+      "CN": 8
+    },
+    "D4": {
+      "CN": 148,
+      "US": 56
+    },
+    "d1_d2_switch": 88,
+    "d1_d2_n": 203
+  },
+  "main": {
+    "D1|svc_bal": {
+      "S_early": 19.84,
+      "S_pre": 20.7,
+      "S_war": 20.84,
+      "S_covid": 19.7,
+      "S_post": 19.87,
+      "d_pretrend": 0.86,
+      "d_war": 0.14,
+      "d_post": -0.84,
+      "dlogodds_post": -0.052,
+      "I_pre": 0.856,
+      "I_post": 0.871,
+      "dI_pct": 1.71
+    },
+    "D1|svc_rep": {
+      "S_early": 17.33,
+      "S_pre": 18.84,
+      "S_war": 18.86,
+      "S_covid": 17.8,
+      "S_post": 17.29,
+      "d_pretrend": null,
+      "d_war": 0.02,
+      "d_post": -1.55,
+      "dlogodds_post": -0.104,
+      "I_pre": 0.909,
+      "I_post": 0.975,
+      "dI_pct": 7.29
+    },
+    "D1|goods_rx": {
+      "S_early": 31.14,
+      "S_pre": 31.39,
+      "S_war": 31.03,
+      "S_covid": 31.87,
+      "S_post": 30.37,
+      "d_pretrend": 0.25,
+      "d_war": -0.37,
+      "d_post": -1.02,
+      "dlogodds_post": -0.048,
+      "I_pre": 1.016,
+      "I_post": 1.001,
+      "dI_pct": -1.39
+    },
+    "D1|goods_b": {
+      "S_early": 31.19,
+      "S_pre": 31.64,
+      "S_war": 31.32,
+      "S_covid": 32.17,
+      "S_post": 30.84,
+      "d_pretrend": 0.45,
+      "d_war": -0.33,
+      "d_post": -0.81,
+      "dlogodds_post": -0.038,
+      "I_pre": 0.965,
+      "I_post": 0.974,
+      "dI_pct": 1.01
+    },
+    "D1|goods_baci": {
+      "S_early": 32.43,
+      "S_pre": 32.86,
+      "S_war": 32.72,
+      "S_covid": 33.47,
+      "S_post": 32.43,
+      "d_pretrend": 0.43,
+      "d_war": -0.14,
+      "d_post": -0.43,
+      "dlogodds_post": -0.019,
+      "I_pre": 0.988,
+      "I_post": 0.995,
+      "dI_pct": 0.7
+    },
+    "D2|svc_bal": {
+      "S_early": 19.48,
+      "S_pre": 19.94,
+      "S_war": 19.4,
+      "S_covid": 18.27,
+      "S_post": 17.2,
+      "d_pretrend": 0.46,
+      "d_war": -0.54,
+      "d_post": -2.74,
+      "dlogodds_post": -0.181,
+      "I_pre": 0.818,
+      "I_post": 0.805,
+      "dI_pct": -1.53
+    },
+    "D2|svc_rep": {
+      "S_early": 16.72,
+      "S_pre": 18.01,
+      "S_war": 17.35,
+      "S_covid": 16.36,
+      "S_post": 14.51,
+      "d_pretrend": null,
+      "d_war": -0.67,
+      "d_post": -3.5,
+      "dlogodds_post": -0.258,
+      "I_pre": 0.85,
+      "I_post": 0.898,
+      "dI_pct": 5.66
+    },
+    "D2|goods_rx": {
+      "S_early": 35.21,
+      "S_pre": 34.0,
+      "S_war": 33.83,
+      "S_covid": 34.53,
+      "S_post": 31.93,
+      "d_pretrend": -1.21,
+      "d_war": -0.17,
+      "d_post": -2.08,
+      "dlogodds_post": -0.094,
+      "I_pre": 1.027,
+      "I_post": 0.985,
+      "dI_pct": -4.09
+    },
+    "D2|goods_b": {
+      "S_early": 35.15,
+      "S_pre": 34.12,
+      "S_war": 34.02,
+      "S_covid": 34.75,
+      "S_post": 32.36,
+      "d_pretrend": -1.03,
+      "d_war": -0.1,
+      "d_post": -1.76,
+      "dlogodds_post": -0.079,
+      "I_pre": 0.98,
+      "I_post": 0.961,
+      "dI_pct": -1.99
+    },
+    "D2|goods_baci": {
+      "S_early": 36.38,
+      "S_pre": 35.33,
+      "S_war": 35.43,
+      "S_covid": 35.94,
+      "S_post": 33.76,
+      "d_pretrend": -1.05,
+      "d_war": 0.1,
+      "d_post": -1.57,
+      "dlogodds_post": -0.069,
+      "I_pre": 1.0,
+      "I_post": 0.98,
+      "dI_pct": -1.97
+    },
+    "D3|svc_bal": {
+      "S_early": 14.05,
+      "S_pre": 14.56,
+      "S_war": 14.52,
+      "S_covid": 14.0,
+      "S_post": 12.38,
+      "d_pretrend": 0.51,
+      "d_war": -0.04,
+      "d_post": -2.18,
+      "dlogodds_post": -0.187,
+      "I_pre": 0.773,
+      "I_post": 0.767,
+      "dI_pct": -0.73
+    },
+    "D3|svc_rep": {
+      "S_early": 11.72,
+      "S_pre": 12.73,
+      "S_war": 12.77,
+      "S_covid": 12.48,
+      "S_post": 10.48,
+      "d_pretrend": null,
+      "d_war": 0.05,
+      "d_post": -2.25,
+      "dlogodds_post": -0.22,
+      "I_pre": 0.816,
+      "I_post": 0.889,
+      "dI_pct": 8.92
+    },
+    "D3|goods_rx": {
+      "S_early": 28.51,
+      "S_pre": 28.28,
+      "S_war": 28.04,
+      "S_covid": 29.11,
+      "S_post": 25.62,
+      "d_pretrend": -0.23,
+      "d_war": -0.24,
+      "d_post": -2.66,
+      "dlogodds_post": -0.135,
+      "I_pre": 1.036,
+      "I_post": 1.023,
+      "dI_pct": -1.24
+    },
+    "D3|goods_b": {
+      "S_early": 28.62,
+      "S_pre": 28.61,
+      "S_war": 28.38,
+      "S_covid": 29.46,
+      "S_post": 26.17,
+      "d_pretrend": -0.01,
+      "d_war": -0.23,
+      "d_post": -2.44,
+      "dlogodds_post": -0.123,
+      "I_pre": 0.973,
+      "I_post": 0.983,
+      "dI_pct": 1.1
+    },
+    "D3|goods_baci": {
+      "S_early": 29.53,
+      "S_pre": 29.59,
+      "S_war": 29.46,
+      "S_covid": 30.36,
+      "S_post": 27.16,
+      "d_pretrend": 0.06,
+      "d_war": -0.13,
+      "d_post": -2.44,
+      "dlogodds_post": -0.12,
+      "I_pre": 0.994,
+      "I_post": 0.999,
+      "dI_pct": 0.42
+    },
+    "D4|svc_bal": {
+      "S_early": 30.86,
+      "S_pre": 31.03,
+      "S_war": 30.78,
+      "S_covid": 28.98,
+      "S_post": 29.97,
+      "d_pretrend": 0.17,
+      "d_war": -0.24,
+      "d_post": -1.06,
+      "dlogodds_post": -0.05,
+      "I_pre": 0.974,
+      "I_post": 0.987,
+      "dI_pct": 1.35
+    },
+    "D4|svc_rep": {
+      "S_early": 27.76,
+      "S_pre": 28.86,
+      "S_war": 28.34,
+      "S_covid": 26.72,
+      "S_post": 26.89,
+      "d_pretrend": null,
+      "d_war": -0.53,
+      "d_post": -1.97,
+      "dlogodds_post": -0.098,
+      "I_pre": 0.999,
+      "I_post": 1.043,
+      "dI_pct": 4.35
+    },
+    "D4|goods_rx": {
+      "S_early": 45.18,
+      "S_pre": 44.26,
+      "S_war": 43.89,
+      "S_covid": 43.76,
+      "S_post": 42.82,
+      "d_pretrend": -0.92,
+      "d_war": -0.37,
+      "d_post": -1.43,
+      "dlogodds_post": -0.058,
+      "I_pre": 1.109,
+      "I_post": 1.072,
+      "dI_pct": -3.39
+    },
+    "D4|goods_b": {
+      "S_early": 44.96,
+      "S_pre": 44.16,
+      "S_war": 43.84,
+      "S_covid": 43.75,
+      "S_post": 42.99,
+      "d_pretrend": -0.8,
+      "d_war": -0.32,
+      "d_post": -1.17,
+      "dlogodds_post": -0.048,
+      "I_pre": 1.081,
+      "I_post": 1.058,
+      "dI_pct": -2.13
+    },
+    "D4|goods_baci": {
+      "S_early": 46.19,
+      "S_pre": 45.49,
+      "S_war": 45.36,
+      "S_covid": 45.18,
+      "S_post": 44.6,
+      "d_pretrend": -0.7,
+      "d_war": -0.13,
+      "d_post": -0.89,
+      "dlogodds_post": -0.036,
+      "I_pre": 1.098,
+      "I_post": 1.077,
+      "dI_pct": -1.92
+    }
+  },
+  "annual_D1": {
+    "2012": {
+      "svc_bal": 19.82,
+      "svc_rep": null,
+      "goods_rx": 30.99,
+      "goods_b": 31.05,
+      "goods_baci": 32.41
+    },
+    "2013": {
+      "svc_bal": 19.83,
+      "svc_rep": null,
+      "goods_rx": 31.32,
+      "goods_b": 31.32,
+      "goods_baci": 32.56
+    },
+    "2014": {
+      "svc_bal": 19.86,
+      "svc_rep": 17.76,
+      "goods_rx": 31.12,
+      "goods_b": 31.2,
+      "goods_baci": 32.31
+    },
+    "2015": {
+      "svc_bal": 20.79,
+      "svc_rep": 18.94,
+      "goods_rx": 31.62,
+      "goods_b": 31.81,
+      "goods_baci": 33.0
+    },
+    "2016": {
+      "svc_bal": 20.68,
+      "svc_rep": 18.71,
+      "goods_rx": 30.89,
+      "goods_b": 31.17,
+      "goods_baci": 32.45
+    },
+    "2017": {
+      "svc_bal": 20.65,
+      "svc_rep": 18.85,
+      "goods_rx": 31.65,
+      "goods_b": 31.92,
+      "goods_baci": 33.12
+    },
+    "2018": {
+      "svc_bal": 21.01,
+      "svc_rep": 18.91,
+      "goods_rx": 31.33,
+      "goods_b": 31.64,
+      "goods_baci": 33.0
+    },
+    "2019": {
+      "svc_bal": 20.69,
+      "svc_rep": 18.8,
+      "goods_rx": 30.71,
+      "goods_b": 30.99,
+      "goods_baci": 32.42
+    },
+    "2020": {
+      "svc_bal": 19.5,
+      "svc_rep": 17.81,
+      "goods_rx": 31.66,
+      "goods_b": 31.92,
+      "goods_baci": 33.21
+    },
+    "2021": {
+      "svc_bal": 19.87,
+      "svc_rep": 17.79,
+      "goods_rx": 32.03,
+      "goods_b": 32.38,
+      "goods_baci": 33.68
+    },
+    "2022": {
+      "svc_bal": 19.83,
+      "svc_rep": 17.52,
+      "goods_rx": 31.06,
+      "goods_b": 31.44,
+      "goods_baci": 33.03
+    },
+    "2023": {
+      "svc_bal": 19.33,
+      "svc_rep": 17.08,
+      "goods_rx": 29.72,
+      "goods_b": 30.21,
+      "goods_baci": 31.83
+    },
+    "2024": {
+      "svc_bal": 20.39,
+      "svc_rep": null,
+      "goods_rx": 30.31,
+      "goods_b": 30.84,
+      "goods_baci": 32.42
+    }
+  },
+  "annual_D3": {
+    "2012": {
+      "svc_bal": 13.67,
+      "svc_rep": null,
+      "goods_rx": 28.13,
+      "goods_b": 28.26,
+      "goods_baci": 29.33
+    },
+    "2013": {
+      "svc_bal": 14.13,
+      "svc_rep": null,
+      "goods_rx": 28.79,
+      "goods_b": 28.85,
+      "goods_baci": 29.67
+    },
+    "2014": {
+      "svc_bal": 14.3,
+      "svc_rep": 12.18,
+      "goods_rx": 28.59,
+      "goods_b": 28.73,
+      "goods_baci": 29.6
+    },
+    "2015": {
+      "svc_bal": 14.7,
+      "svc_rep": 12.8,
+      "goods_rx": 28.41,
+      "goods_b": 28.7,
+      "goods_baci": 29.5
+    },
+    "2016": {
+      "svc_bal": 14.58,
+      "svc_rep": 12.69,
+      "goods_rx": 27.71,
+      "goods_b": 28.08,
+      "goods_baci": 29.0
+    },
+    "2017": {
+      "svc_bal": 14.41,
+      "svc_rep": 12.7,
+      "goods_rx": 28.67,
+      "goods_b": 29.01,
+      "goods_baci": 30.22
+    },
+    "2018": {
+      "svc_bal": 14.66,
+      "svc_rep": 12.78,
+      "goods_rx": 28.38,
+      "goods_b": 28.74,
+      "goods_baci": 29.8
+    },
+    "2019": {
+      "svc_bal": 14.39,
+      "svc_rep": 12.77,
+      "goods_rx": 27.69,
+      "goods_b": 28.01,
+      "goods_baci": 29.11
+    },
+    "2020": {
+      "svc_bal": 13.78,
+      "svc_rep": 12.41,
+      "goods_rx": 29.0,
+      "goods_b": 29.3,
+      "goods_baci": 30.19
+    },
+    "2021": {
+      "svc_bal": 14.19,
+      "svc_rep": 12.54,
+      "goods_rx": 29.19,
+      "goods_b": 29.58,
+      "goods_baci": 30.5
+    },
+    "2022": {
+      "svc_bal": 12.83,
+      "svc_rep": 11.12,
+      "goods_rx": 27.26,
+      "goods_b": 27.69,
+      "goods_baci": 28.72
+    },
+    "2023": {
+      "svc_bal": 11.74,
+      "svc_rep": 9.88,
+      "goods_rx": 24.68,
+      "goods_b": 25.26,
+      "goods_baci": 26.27
+    },
+    "2024": {
+      "svc_bal": 12.59,
+      "svc_rep": null,
+      "goods_rx": 24.82,
+      "goods_b": 25.47,
+      "goods_baci": 26.37
+    }
+  },
+  "bootstrap_D1": {
+    "svc_bal": {
+      "lo": -2.11,
+      "hi": 0.81,
+      "n": 1000
+    },
+    "svc_rep": {
+      "lo": -2.79,
+      "hi": 0.11,
+      "n": 1000
+    },
+    "goods_rx": {
+      "lo": -2.44,
+      "hi": 0.47,
+      "n": 1000
+    },
+    "diff_bal": {
+      "lo": -1.09,
+      "hi": 1.77,
+      "n": 1000
+    },
+    "diff_rep": {
+      "lo": -1.6,
+      "hi": 0.88,
+      "n": 1000
+    },
+    "n_exporters": 105
+  },
+  "russia_exclusion": {
+    "D1|svc_bal": {
+      "d_all": -0.84,
+      "d_exrus": -0.82
+    },
+    "D1|svc_rep": {
+      "d_all": -1.55,
+      "d_exrus": -1.53
+    },
+    "D1|goods_rx": {
+      "d_all": -1.02,
+      "d_exrus": -1.0
+    },
+    "D2|svc_bal": {
+      "d_all": -2.74,
+      "d_exrus": -1.82
+    },
+    "D2|svc_rep": {
+      "d_all": -3.5,
+      "d_exrus": -2.78
+    },
+    "D2|goods_rx": {
+      "d_all": -2.08,
+      "d_exrus": -0.99
+    },
+    "D3|svc_bal": {
+      "d_all": -2.18,
+      "d_exrus": -1.11
+    },
+    "D3|svc_rep": {
+      "d_all": -2.25,
+      "d_exrus": -1.42
+    },
+    "D3|goods_rx": {
+      "d_all": -2.66,
+      "d_exrus": -1.44
+    },
+    "D4|svc_bal": {
+      "d_all": -1.06,
+      "d_exrus": -0.38
+    },
+    "D4|svc_rep": {
+      "d_all": -1.97,
+      "d_exrus": -1.44
+    },
+    "D4|goods_rx": {
+      "d_all": -1.43,
+      "d_exrus": -0.67
+    }
+  },
+  "russia_quality": {
+    "pre": {
+      "x_pct": 78.1,
+      "mirror_only_pct": 21.5,
+      "none_pct": 0.4
+    },
+    "post": {
+      "x_pct": 38.5,
+      "mirror_only_pct": 18.1,
+      "none_pct": 43.4
+    }
+  },
+  "russia_mirror": {
+    "2015": {
+      "bal": 26929.0,
+      "mirror": 21880.0
+    },
+    "2016": {
+      "bal": 26794.0,
+      "mirror": 21539.0
+    },
+    "2017": {
+      "bal": 26381.0,
+      "mirror": 17915.0
+    },
+    "2018": {
+      "bal": 28944.0,
+      "mirror": 20080.0
+    },
+    "2019": {
+      "bal": 27738.0,
+      "mirror": 20341.0
+    },
+    "2020": {
+      "bal": 24051.0,
+      "mirror": 17157.0
+    },
+    "2021": {
+      "bal": 28046.0,
+      "mirror": 20166.0
+    },
+    "2022": {
+      "bal": 21907.0,
+      "mirror": 15385.0
+    },
+    "2023": {
+      "bal": 15724.0,
+      "mirror": 9105.0
+    }
+  },
+  "taiwan_hk_D1": {
+    "svc_bal|base": -0.84,
+    "svc_bal|ex_twhk": -0.88,
+    "goods_rx|base": -1.02,
+    "goods_rx|ex_twhk": -0.63
+  },
+  "cat_sum_check": 100.0,
+  "decomp": {
+    "D1": {
+      "ICT": {
+        "w_pre": 8.86,
+        "w_post": 11.75,
+        "s_pre": 21.56,
+        "s_post": 21.74,
+        "ds": 0.18,
+        "composition": 0.63,
+        "within": 0.02
+      },
+      "기타": {
+        "w_pre": 5.7,
+        "w_post": 5.5,
+        "s_pre": 20.7,
+        "s_post": 17.86,
+        "ds": -2.84,
+        "composition": -0.04,
+        "within": -0.16
+      },
+      "기타 디지털": {
+        "w_pre": 46.97,
+        "w_post": 49.14,
+        "s_pre": 15.84,
+        "s_post": 15.72,
+        "ds": -0.12,
+        "composition": 0.34,
+        "within": -0.06
+      },
+      "여행": {
+        "w_pre": 21.73,
+        "w_post": 16.36,
+        "s_pre": 27.83,
+        "s_post": 24.79,
+        "ds": -3.04,
+        "composition": -1.41,
+        "within": -0.58
+      },
+      "운송": {
+        "w_pre": 16.74,
+        "w_post": 17.24,
+        "s_pre": 24.65,
+        "s_post": 26.38,
+        "ds": 1.73,
+        "composition": 0.13,
+        "within": 0.29
+      },
+      "_total": {
+        "composition": -0.35,
+        "within": -0.48,
+        "total": -0.84
+      }
+    },
+    "D2": {
+      "ICT": {
+        "w_pre": 8.04,
+        "w_post": 11.22,
+        "s_pre": 14.77,
+        "s_post": 14.31,
+        "ds": -0.47,
+        "composition": 0.46,
+        "within": -0.04
+      },
+      "기타": {
+        "w_pre": 6.47,
+        "w_post": 6.14,
+        "s_pre": 29.97,
+        "s_post": 25.21,
+        "ds": -4.76,
+        "composition": -0.09,
+        "within": -0.3
+      },
+      "기타 디지털": {
+        "w_pre": 45.45,
+        "w_post": 48.08,
+        "s_pre": 14.81,
+        "s_post": 12.93,
+        "ds": -1.88,
+        "composition": 0.37,
+        "within": -0.88
+      },
+      "여행": {
+        "w_pre": 22.71,
+        "w_post": 16.81,
+        "s_pre": 26.01,
+        "s_post": 20.53,
+        "ds": -5.47,
+        "composition": -1.37,
+        "within": -1.08
+      },
+      "운송": {
+        "w_pre": 17.33,
+        "w_post": 17.75,
+        "s_pre": 24.08,
+        "s_post": 24.69,
+        "ds": 0.61,
+        "composition": 0.1,
+        "within": 0.11
+      },
+      "_total": {
+        "composition": -0.53,
+        "within": -2.2,
+        "total": -2.74
+      }
+    },
+    "D3": {
+      "ICT": {
+        "w_pre": 8.24,
+        "w_post": 11.16,
+        "s_pre": 10.0,
+        "s_post": 10.47,
+        "ds": 0.47,
+        "composition": 0.3,
+        "within": 0.05
+      },
+      "기타": {
+        "w_pre": 5.77,
+        "w_post": 5.54,
+        "s_pre": 17.12,
+        "s_post": 13.86,
+        "ds": -3.25,
+        "composition": -0.04,
+        "within": -0.18
+      },
+      "기타 디지털": {
+        "w_pre": 47.98,
+        "w_post": 50.23,
+        "s_pre": 10.54,
+        "s_post": 9.49,
+        "ds": -1.05,
+        "composition": 0.23,
+        "within": -0.52
+      },
+      "여행": {
+        "w_pre": 20.79,
+        "w_post": 14.99,
+        "s_pre": 20.99,
+        "s_post": 14.03,
+        "ds": -6.96,
+        "composition": -1.02,
+        "within": -1.25
+      },
+      "운송": {
+        "w_pre": 17.22,
+        "w_post": 18.09,
+        "s_pre": 19.32,
+        "s_post": 19.78,
+        "ds": 0.46,
+        "composition": 0.17,
+        "within": 0.08
+      },
+      "_total": {
+        "composition": -0.36,
+        "within": -1.82,
+        "total": -2.18
+      }
+    },
+    "D4": {
+      "ICT": {
+        "w_pre": 8.52,
+        "w_post": 11.25,
+        "s_pre": 30.44,
+        "s_post": 29.49,
+        "ds": -0.95,
+        "composition": 0.82,
+        "within": -0.09
+      },
+      "기타": {
+        "w_pre": 6.24,
+        "w_post": 6.23,
+        "s_pre": 37.11,
+        "s_post": 38.04,
+        "ds": 0.93,
+        "composition": -0.0,
+        "within": 0.06
+      },
+      "기타 디지털": {
+        "w_pre": 44.97,
+        "w_post": 46.88,
+        "s_pre": 24.12,
+        "s_post": 23.4,
+        "ds": -0.72,
+        "composition": 0.45,
+        "within": -0.33
+      },
+      "여행": {
+        "w_pre": 22.6,
+        "w_post": 17.06,
+        "s_pre": 39.71,
+        "s_post": 38.03,
+        "ds": -1.67,
+        "composition": -2.15,
+        "within": -0.33
+      },
+      "운송": {
+        "w_pre": 17.67,
+        "w_post": 18.58,
+        "s_pre": 35.64,
+        "s_post": 36.73,
+        "ds": 1.09,
+        "composition": 0.33,
+        "within": 0.2
+      },
+      "_total": {
+        "composition": -0.56,
+        "within": -0.5,
+        "total": -1.06
+      }
+    }
+  },
+  "decomp_D1_2023_24": {
+    "ICT": {
+      "w_pre": 8.86,
+      "w_post": 11.85,
+      "s_pre": 21.56,
+      "s_post": 21.74,
+      "ds": 0.18,
+      "composition": 0.65,
+      "within": 0.02
+    },
+    "기타": {
+      "w_pre": 5.7,
+      "w_post": 5.44,
+      "s_pre": 20.7,
+      "s_post": 17.85,
+      "ds": -2.85,
+      "composition": -0.05,
+      "within": -0.16
+    },
+    "기타 디지털": {
+      "w_pre": 46.97,
+      "w_post": 49.0,
+      "s_pre": 15.84,
+      "s_post": 15.62,
+      "ds": -0.22,
+      "composition": 0.32,
+      "within": -0.11
+    },
+    "여행": {
+      "w_pre": 21.73,
+      "w_post": 17.5,
+      "s_pre": 27.83,
+      "s_post": 25.59,
+      "ds": -2.23,
+      "composition": -1.13,
+      "within": -0.44
+    },
+    "운송": {
+      "w_pre": 16.74,
+      "w_post": 16.21,
+      "s_pre": 24.65,
+      "s_post": 25.93,
+      "ds": 1.28,
+      "composition": -0.13,
+      "within": 0.21
+    },
+    "_total": {
+      "composition": -0.35,
+      "within": -0.47
+    }
+  },
+  "annual_category_D1": {
+    "2012": {
+      "ICT": 21.38,
+      "기타": 23.67,
+      "기타 디지털": 15.3,
+      "여행": 21.97,
+      "운송": 25.97
+    },
+    "2013": {
+      "ICT": 21.33,
+      "기타": 22.0,
+      "기타 디지털": 15.49,
+      "여행": 22.75,
+      "운송": 25.51
+    },
+    "2014": {
+      "ICT": 20.26,
+      "기타": 20.98,
+      "기타 디지털": 15.6,
+      "여행": 24.47,
+      "운송": 24.58
+    },
+    "2015": {
+      "ICT": 21.24,
+      "기타": 21.36,
+      "기타 디지털": 15.82,
+      "여행": 27.43,
+      "운송": 25.33
+    },
+    "2016": {
+      "ICT": 21.97,
+      "기타": 20.65,
+      "기타 디지털": 15.73,
+      "여행": 28.29,
+      "운송": 24.18
+    },
+    "2017": {
+      "ICT": 21.49,
+      "기타": 20.15,
+      "기타 디지털": 15.97,
+      "여행": 27.75,
+      "운송": 24.44
+    },
+    "2018": {
+      "ICT": 21.94,
+      "기타": 19.59,
+      "기타 디지털": 16.4,
+      "여행": 28.03,
+      "운송": 24.82
+    },
+    "2019": {
+      "ICT": 21.61,
+      "기타": 18.81,
+      "기타 디지털": 16.24,
+      "여행": 27.91,
+      "운송": 24.59
+    },
+    "2020": {
+      "ICT": 20.8,
+      "기타": 18.04,
+      "기타 디지털": 15.83,
+      "여행": 30.63,
+      "운송": 25.66
+    },
+    "2021": {
+      "ICT": 21.29,
+      "기타": 17.65,
+      "기타 디지털": 15.91,
+      "여행": 26.05,
+      "운송": 28.63
+    },
+    "2022": {
+      "ICT": 21.74,
+      "기타": 17.88,
+      "기타 디지털": 15.95,
+      "여행": 22.46,
+      "운송": 27.22
+    },
+    "2023": {
+      "ICT": 21.07,
+      "기타": 17.13,
+      "기타 디지털": 15.48,
+      "여행": 24.61,
+      "운송": 24.85
+    },
+    "2024": {
+      "ICT": 22.35,
+      "기타": 18.55,
+      "기타 디지털": 15.75,
+      "여행": 26.46,
+      "운송": 26.96
+    }
+  },
+  "network": {
+    "n_nodes": 80,
+    "annual": {
+      "2012": {
+        "svc_ari": 0.165,
+        "goods_ari": 0.3,
+        "svc_ncom": 5.35,
+        "goods_ncom": 4.0,
+        "svc_q_d1": 0.083,
+        "goods_q_d1": 0.069,
+        "svc_q_d3": 0.087,
+        "goods_q_d3": 0.096
+      },
+      "2013": {
+        "svc_ari": 0.177,
+        "goods_ari": 0.266,
+        "svc_ncom": 5.35,
+        "goods_ncom": 3.95,
+        "svc_q_d1": 0.083,
+        "goods_q_d1": 0.073,
+        "svc_q_d3": 0.089,
+        "goods_q_d3": 0.095
+      },
+      "2014": {
+        "svc_ari": 0.208,
+        "goods_ari": 0.281,
+        "svc_ncom": 5.05,
+        "goods_ncom": 4.0,
+        "svc_q_d1": 0.085,
+        "goods_q_d1": 0.082,
+        "svc_q_d3": 0.091,
+        "goods_q_d3": 0.101
+      },
+      "2015": {
+        "svc_ari": 0.212,
+        "goods_ari": 0.285,
+        "svc_ncom": 5.0,
+        "goods_ncom": 4.1,
+        "svc_q_d1": 0.082,
+        "goods_q_d1": 0.091,
+        "svc_q_d3": 0.091,
+        "goods_q_d3": 0.11
+      },
+      "2016": {
+        "svc_ari": 0.171,
+        "goods_ari": 0.315,
+        "svc_ncom": 5.4,
+        "goods_ncom": 4.75,
+        "svc_q_d1": 0.081,
+        "goods_q_d1": 0.09,
+        "svc_q_d3": 0.092,
+        "goods_q_d3": 0.109
+      },
+      "2017": {
+        "svc_ari": 0.182,
+        "goods_ari": 0.303,
+        "svc_ncom": 5.15,
+        "goods_ncom": 4.5,
+        "svc_q_d1": 0.082,
+        "goods_q_d1": 0.093,
+        "svc_q_d3": 0.093,
+        "goods_q_d3": 0.107
+      },
+      "2018": {
+        "svc_ari": 0.201,
+        "goods_ari": 0.299,
+        "svc_ncom": 5.2,
+        "goods_ncom": 4.4,
+        "svc_q_d1": 0.085,
+        "goods_q_d1": 0.092,
+        "svc_q_d3": 0.095,
+        "goods_q_d3": 0.109
+      },
+      "2019": {
+        "svc_ari": 0.19,
+        "goods_ari": 0.321,
+        "svc_ncom": 5.65,
+        "goods_ncom": 4.85,
+        "svc_q_d1": 0.088,
+        "goods_q_d1": 0.095,
+        "svc_q_d3": 0.096,
+        "goods_q_d3": 0.113
+      },
+      "2020": {
+        "svc_ari": 0.175,
+        "goods_ari": 0.372,
+        "svc_ncom": 5.0,
+        "goods_ncom": 3.8,
+        "svc_q_d1": 0.084,
+        "goods_q_d1": 0.104,
+        "svc_q_d3": 0.093,
+        "goods_q_d3": 0.121
+      },
+      "2021": {
+        "svc_ari": 0.208,
+        "goods_ari": 0.331,
+        "svc_ncom": 4.95,
+        "goods_ncom": 3.95,
+        "svc_q_d1": 0.084,
+        "goods_q_d1": 0.107,
+        "svc_q_d3": 0.092,
+        "goods_q_d3": 0.123
+      },
+      "2022": {
+        "svc_ari": 0.223,
+        "goods_ari": 0.33,
+        "svc_ncom": 4.9,
+        "goods_ncom": 4.0,
+        "svc_q_d1": 0.088,
+        "goods_q_d1": 0.102,
+        "svc_q_d3": 0.1,
+        "goods_q_d3": 0.126
+      },
+      "2023": {
+        "svc_ari": 0.339,
+        "goods_ari": 0.37,
+        "svc_ncom": 4.0,
+        "goods_ncom": 4.0,
+        "svc_q_d1": 0.09,
+        "goods_q_d1": 0.103,
+        "svc_q_d3": 0.101,
+        "goods_q_d3": 0.125
+      },
+      "2024": {
+        "svc_ari": 0.337,
+        "goods_ari": 0.373,
+        "svc_ncom": 4.0,
+        "goods_ncom": 4.0,
+        "svc_q_d1": 0.084,
+        "goods_q_d1": 0.109,
+        "svc_q_d3": 0.093,
+        "goods_q_d3": 0.13
+      }
+    },
+    "pre": {
+      "svc_ari": 0.188,
+      "goods_ari": 0.301,
+      "svc_ncom": 5.183,
+      "goods_ncom": 4.45,
+      "svc_q_d1": 0.082,
+      "goods_q_d1": 0.092,
+      "svc_q_d3": 0.092,
+      "goods_q_d3": 0.109
+    },
+    "post": {
+      "svc_ari": 0.3,
+      "goods_ari": 0.357,
+      "svc_ncom": 4.3,
+      "goods_ncom": 4.0,
+      "svc_q_d1": 0.087,
+      "goods_q_d1": 0.105,
+      "svc_q_d3": 0.098,
+      "goods_q_d3": 0.127
+    }
+  }
+}

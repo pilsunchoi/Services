@@ -20,3 +20,5 @@ __pycache__/
 
 # 연구 산출물 중 중간 덤프는 올리지 않는다. 본문이 인용하는 stats.json과 그림만 남긴다.
 research/**/out/*.csv
+# 블록 배정표는 검토 대상이므로 올린다
+!research/**/out/blocs.csv
