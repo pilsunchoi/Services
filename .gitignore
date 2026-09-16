@@ -1,0 +1,19 @@
+# 자료는 저장소에 넣지 않는다 — 스크립트가 원본을 받아 다시 만든다.
+# 원본 zip 1.8GB, 만들어지는 DB 약 2GB.
+data/*
+!data/raw/
+!data/interim/
+!data/processed/
+!data/external/
+data/raw/*
+data/interim/*
+data/processed/*
+data/external/*
+!data/**/.gitkeep
+
+logs/*
+!logs/.gitkeep
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

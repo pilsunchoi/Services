@@ -1,0 +1,615 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서비스 교역 DB (OECD-WTO BaTIS 기반)</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#ffffff; --ink:#1b2430; --muted:#5b6673;
+    --line:#e3e7ec; --brand:#1f6feb; --brand-soft:#eaf1fe;
+    --ok:#137a3f; --ok-soft:#e6f4ec; --warn:#8a5b00; --warn-soft:#fdf3df;
+    --info:#4b4f8a; --info-soft:#ecedf7; --danger:#a11; --code:#0f172a;
+    --radius:12px; --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    /* 한국어는 기본값이면 낱말 한가운데서 끊긴다. keep-all이 띄어쓰기에서만 끊게 하고,
+       overflow-wrap이 fact_bimts_cpa2 같은 긴 식별자를 넘치지 않게 받는다. */
+    word-break:keep-all; overflow-wrap:break-word;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",Roboto,sans-serif;
+    line-height:1.6; -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 16px}
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
+
+  /* header */
+  /* 헤더 색은 DB마다 다르다 — 대시보드를 첫 화면에서 가르는 표시.
+     KCSDB2(무역통계) 연한 파랑, GVC 연한 초록, KCSTARIFF 연한 살구색, 이 DB(서비스 교역) 연한 보라. */
+  header.top{background:#eee9fb; border-bottom:1px solid #d6cbf2}
+  .brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:22px 0 6px}
+  .brand h1{font-size:1.95rem;font-weight:700;margin:0;letter-spacing:-.01em}
+  .brand .tag{color:#5b3fa8;font-size:1.17rem;font-weight:700}
+  .lede{color:var(--muted);margin:0 0 16px;font-size:.98rem}
+
+  /* tabs */
+  nav.tabs{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(1.4) blur(6px); border-bottom:1px solid var(--line)}
+  .tabrow{display:flex;gap:4px;overflow-x:auto;padding:8px 0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabrow::-webkit-scrollbar{display:none}
+  .tabrow button{
+    flex:0 0 auto; border:1px solid transparent; background:transparent; color:var(--ink);
+    font:inherit; font-weight:700; font-size:.98rem; padding:11px 14px; border-radius:999px; cursor:pointer; white-space:nowrap;
+  }
+  .tabrow button:hover{color:var(--ink);background:var(--brand-soft)}
+  .tabrow button[aria-selected="true"]{color:var(--brand);background:var(--brand-soft);border-color:#d4e2fb}
+
+  /* sections */
+  main{padding:22px 0 8px}
+  section[role=tabpanel]{display:none;animation:fade .18s ease}
+  section[role=tabpanel].active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  h2.h{font-size:1.56rem;margin:2px 0 6px}
+  .sub{color:var(--muted);margin:6px 0 14px;font-size:.95rem}
+  .sub.lead{color:var(--ink);font-weight:600;font-size:1.02rem;margin:0 0 18px}
+  .sub.lead + .panel{margin-top:0}
+  h3{font-size:1.2rem;margin:30px 0 8px;letter-spacing:-.01em}
+  section[role=tabpanel] > h3{border-top:1px solid var(--line);padding-top:24px}
+  section[role=tabpanel] > h3:first-of-type{border-top:none;padding-top:0;margin-top:22px}
+  section[role=tabpanel] > h4{font-size:1rem;margin:20px 0 6px}
+  ol.steps h4{font-size:1rem;margin:0 0 4px}
+  p{margin:8px 0}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 16px;margin:14px 0}
+  .panel > :first-child{margin-top:0}
+  .panel > :last-child{margin-bottom:0}
+
+  /* stat cards */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow)}
+  .stat .n{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  .stat .k{color:var(--muted);font-size:.82rem;margin-top:2px}
+
+  /* principle list */
+  ol.principle{counter-reset:p;list-style:none;padding:0;margin:10px 0}
+  ol.principle li{counter-increment:p;position:relative;padding:10px 12px 10px 46px;border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fff}
+  ol.principle li::before{content:counter(p);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;
+    background:var(--brand);color:#fff;font-weight:700;font-size:.85rem;display:grid;place-items:center}
+
+  /* tables */
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:14px 0;
+    -webkit-overflow-scrolling:touch;
+    background:
+      linear-gradient(to right,var(--panel) 40%,rgba(255,255,255,0)) left center/28px 100% no-repeat local,
+      linear-gradient(to left,var(--panel) 40%,rgba(255,255,255,0)) right center/28px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%,rgba(16,24,40,.16),rgba(16,24,40,0)) left center/12px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%,rgba(16,24,40,.16),rgba(16,24,40,0)) right center/12px 100% no-repeat scroll;
+    background-color:var(--panel)}
+  table{border-collapse:collapse;width:100%;min-width:440px;font-size:.9rem}
+  caption{caption-side:top;text-align:left;font-weight:700;padding:10px 12px 2px;font-size:.93rem}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:#f2f5f9;color:var(--muted);font-weight:700;white-space:nowrap}
+  tbody tr:last-child td{border-bottom:none}
+  td code{color:var(--code)}
+  td.r,th.r{text-align:right;white-space:nowrap}
+  td.s,th.s{font-size:.84rem;color:var(--muted)}
+  tr.grp td{background:#f2f5f9;font-weight:700;color:var(--ink);font-size:.88rem;padding-top:10px;padding-bottom:6px}
+  tbody tr:hover td{background:#f8fafc}
+  table.inv{min-width:760px}
+  table.inv td:nth-child(2){min-width:230px}
+  table.inv td:nth-child(5){min-width:200px}
+
+  /* badges & verdict */
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:700;line-height:1.7}
+  .pill.ok{background:var(--ok-soft);color:var(--ok)}
+  .pill.warn{background:var(--warn-soft);color:var(--warn)}
+  .pill.info{background:var(--info-soft);color:var(--info)}
+  .pill.fail{background:#fdecec;color:var(--danger)}
+  .verdict{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+
+  /* trap cards */
+  .traps{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin:12px 0}
+  .trap{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+  .trap h4{margin:0 0 4px;font-size:.98rem}
+  .trap .tref{color:var(--muted);font-size:.76rem;font-weight:600}
+  .trap p{margin:6px 0 0;font-size:.9rem;color:#333}
+  .trap.hot{border-left-color:var(--warn)}
+  .trap.hot .tref{color:var(--warn)}
+
+  /* steps */
+  ol.steps{padding-left:0;counter-reset:s;list-style:none;margin:12px 0}
+  ol.steps > li{counter-increment:s;position:relative;padding:2px 0 16px 40px;border-left:2px solid var(--line);margin-left:12px}
+  ol.steps > li:last-child{border-left-color:transparent}
+  ol.steps > li::before{content:counter(s);position:absolute;left:-14px;top:0;width:26px;height:26px;border-radius:50%;
+    background:#fff;border:2px solid var(--brand);color:var(--brand);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+  ol.steps h4{margin:0 0 4px;font-size:.98rem}
+
+  pre{background:var(--code);color:#e6edf3;border-radius:10px;padding:14px;overflow-x:auto;font-size:.85rem;line-height:1.5;margin:10px 0}
+  pre code{color:inherit}
+  .inlinecode{background:#eef1f5;border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+
+  /* 상자는 두 갈래다. note = 알아 두면 좋은 보충, note.warn = 모르고 쓰면 틀리는 것. */
+  .note{background:var(--info-soft);border:1px solid #dcdef2;border-left:3px solid var(--info);
+    border-radius:10px;padding:10px 14px;margin:14px 0;font-size:.9rem}
+  .note b{color:var(--info)}
+  .note.warn{background:var(--warn-soft);border-color:#f0e2c0;border-left-color:var(--warn)}
+  .note.warn b{color:var(--warn)}
+
+  .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+  .btn{display:inline-block;padding:9px 16px;border-radius:9px;font-weight:600;font-size:.92rem;border:1px solid var(--line);background:#fff}
+  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn.primary:hover{text-decoration:none;opacity:.92}
+
+  /* 빈 탭 */
+  .empty{border:1px dashed #cdd4dd;border-radius:var(--radius);background:#fff;padding:34px 22px;text-align:center;color:var(--muted);margin:16px 0}
+  .empty h3{margin:0 0 6px;border:none;padding:0;color:var(--ink)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0 40px;color:var(--muted);font-size:.84rem;background:#fff}
+  footer .ver{display:inline-block;background:#eef1f5;border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-weight:700;color:var(--ink);margin-bottom:8px}
+  footer p{margin:6px 0}
+
+  @media (max-width:560px){
+    table{min-width:0;font-size:.85rem}
+    table.inv{min-width:640px}
+    th,td{padding:7px 9px;overflow-wrap:anywhere}
+    thead th{white-space:normal}
+  }
+  @media (max-width:420px){
+    .brand h1{font-size:1.625rem}
+    h3{font-size:1.1rem}
+    .stat .n{font-size:1.28rem}
+    h2.h{font-size:1.4rem}
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>서비스 교역 DB</h1>
+      <span class="tag">OECD-WTO BaTIS 기반</span>
+    </div>
+    <p class="lede">이 데이터베이스는 OECD와 WTO가 함께 만드는 <a href="https://www.oecd.org/en/data/datasets/oecd-balanced-trade-statistics.html" target="_blank" rel="noopener">균형 서비스 교역 통계(BaTIS)</a>를 배포본 그대로 담고, 짝이 되는 상품 교역 통계(BIMTS)를 같은 원칙으로 함께 실은 것이다. 서비스는 2005–2024년 203개 경제와 그 상대국을 EBOPS 2010 31개 항목으로, 상품은 1995–2024년을 HS2017 2단위와 CPA 2.1로 담는다. 나라쌍 서비스 교역을 전 세계 규모로 볼 수 있는 자료는 사실상 이것뿐이다. 무엇이 얼마나 들어 있는지는 <a href="#" onclick="showTab('use');return false">받기·사용</a> 탭의 표 전체 목록에 있다.</p>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <div class="tabrow" role="tablist" aria-label="대시보드 탭">
+      <button role="tab" aria-selected="true"  aria-controls="tab-overview" id="t-overview">개요</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-build"    id="t-build">DB 구축</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-balance"  id="t-balance">균형화와 추정</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-traps"    id="t-traps">데이터 함정</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-use"      id="t-use">받기·사용</button>
+      <button role="tab" aria-selected="false" aria-controls="tab-research" id="t-research">연구</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+  <!-- ============ 개요 ============ -->
+  <section role="tabpanel" id="tab-overview" aria-labelledby="t-overview" class="active">
+    <h2 class="h">개요</h2>
+    <p class="sub lead">이 DB가 무엇을 담고, 어떤 설계 원칙 위에 서 있는지를 소개한다.</p>
+
+    <div class="panel">
+      <p><b>무엇인가.</b> OECD-WTO의 균형 서비스 교역 통계(BaTIS)와 OECD의 균형 상품 교역 통계(BIMTS)를 변형 없이 적재한 DuckDB 단일 파일 DB다. 본체는 서비스다. 나라쌍(보고국×상대국)으로 EBOPS 2010 31개 항목의 수출입을 담고, 각 칸마다 <b>보고치·조정치·균형치 세 값과 그 값이 어떻게 만들어졌는지를 말해 주는 방법론 코드</b>가 함께 들어 있다. 상품은 대조군으로 같은 구조에서 HS2017 2단위(98종)와 CPA 2.1(57종)로 담았다. 파일 하나만 있으면 별도 서버나 설치 없이 바로 SQL로 질의할 수 있다.</p>
+      <p><b>왜 만들었나.</b> 서비스 교역은 나라쌍으로 보고되는 비율이 애초에 낮다. 이 DB의 실측으로 총서비스 기준 보고 커버리지는 행 수로 5~17%, 금액으로 23~33%에 그친다. 나머지는 OECD·WTO가 중력모형으로 메운 것이다. 그래서 「한국의 대중 서비스 수출이 얼마인가」라는 질문에조차 <b>어느 값을 쓰느냐에 따라 다른 답</b>이 나온다. 이 DB는 세 값을 모두 보존하고 방법론 코드를 dim으로 붙여, 추정분을 걸러 내거나 비중을 재는 일을 사용자가 직접 할 수 있게 한다.</p>
+      <p><b>무엇이 어려운가.</b> 두 가지다. 첫째, 이 자료는 1차 통계가 아니라 <b>추정과 균형화가 이미 들어간 산출물</b>이다. 균형치는 개별 경제쌍에서 「A의 대B 수출 = B의 대A 수입」이 <b>오차 0으로</b> 성립하도록 만들어져 있어, 그 값으로는 수출입 비대칭을 연구할 수 없다. 둘째, 판(edition)이 바뀌면 과거 연도까지 통째로 다시 추정되는데 OECD는 URL을 그대로 둔 채 파일만 갈아 끼운다. 그래서 이 DB는 모든 fact에 판을 키로 넣고 받은 원본과 해시를 영구 보존한다.</p>
+      <p><b>누구를 위한 것인가.</b> 서비스 교역을 나라쌍 수준에서 직접 분석하려는 연구자와 학생이다. 상품 교역과 나란히 놓고 보는 일(서비스 비중, 디지털 전달 가능 서비스, 상품·서비스 동조성)이 이 DB의 자연스러운 쓰임새다. 반대로 이 DB가 답하지 못하는 것도 분명하다. 기업 단위가 아니고, 월·분기가 아닌 <b>연 단위</b>이며, 공급 형태별(Mode 1~4) 구분이 없고, 상품 쪽에는 보고치가 아예 들어 있지 않다. 한국 세관 원장 수준의 상품 자료는 자매 DB <a href="https://pilsunchoi.github.io/KCSDB2/" target="_blank" rel="noopener">KCSDB2</a>가, 부가가치 기준 분해는 <a href="https://pilsunchoi.github.io/GVC/" target="_blank" rel="noopener">GVC 지표 DB</a>가 갖고 있다.</p>
+    </div>
+
+<!-- DB_STATUS:START -->
+    <div class="stats">
+      <div class="stat"><div class="n">142,689,890</div><div class="k">fact 행 합계</div></div>
+      <div class="stat"><div class="n">2005–2024</div><div class="k">서비스 (BaTIS)</div></div>
+      <div class="stat"><div class="n">1995–2024</div><div class="k">상품 (BIMTS)</div></div>
+      <div class="stat"><div class="n">203</div><div class="k">개별 경제 (집계 코드 제외)</div></div>
+      <div class="stat"><div class="n">31</div><div class="k">EBOPS 서비스 항목</div></div>
+      <div class="stat"><div class="n">1,982 MB</div><div class="k">DuckDB 파일</div></div>
+    </div>
+<!-- DB_STATUS:END -->
+
+    <h3>설계 원칙</h3>
+    <p>원칙은 자매 DB인 <a href="https://pilsunchoi.github.io/KCSDB2/" target="_blank" rel="noopener">KCSDB2</a>의 구축 원칙을 잇는다. 다만 원자료의 성격이 달라 네 번째 원칙이 새로 붙었다 — 이 자료에서는 「원본 그대로」가 곧 「추정의 흔적까지 그대로」를 뜻한다.</p>
+    <ol class="principle">
+      <li><b>fact는 배포 파일의 관측·식별 필드만 담는다.</b> 파생 컬럼을 만들지 않는다. 비중·성장률·집계는 분석 계층의 일이다.</li>
+      <li><b>관측값을 변형하지 않는다.</b> 단위를 달러로 환산하지 않고(백만 USD 그대로), 반올림하지 않으며, 결측을 0으로 채우지 않는다.</li>
+      <li><b>참조·설명·분류는 dim이 맡는다.</b> 경제 코드, 항목명, 방법론 설명, 품목 분류는 전부 dim 테이블에 있고 fact는 건드리지 않는다.</li>
+      <li><b>추정의 흔적을 관측값과 같은 자격으로 담는다.</b> 방법론 코드와 관측 상태 플래그가 없으면 이 자료는 연구에 쓸 수 없다.</li>
+      <li><b>판(edition)을 키로 둔다.</b> 새 판은 과거 연도까지 다시 추정한다. 원본 zip과 sha256을 보존하고, <code>00_probe_source.py</code>가 원격 파일과 대조해 판이 갈렸는지 알린다.</li>
+    </ol>
+
+    <h3>한눈에 보는 예</h3>
+    <p>세계 수출 총액을 서비스와 상품으로 나란히 두면 이 DB가 무엇을 할 수 있는지가 바로 보인다. 아래는 개별 경제쌍만 더한 값이다(집계 코드를 섞으면 두 배가 된다 — <a href="#" onclick="showTab('traps');return false">데이터 함정</a> 탭).</p>
+    <div class="tblwrap">
+      <table>
+        <caption>세계 수출 총액과 서비스 비중 (백만 USD, 균형치 기준)</caption>
+        <thead><tr><th>연도</th><th class="r">서비스</th><th class="r">상품</th><th class="r">상품(재수출 조정)</th><th class="r">서비스 비중</th></tr></thead>
+        <tbody>
+          <tr><td>2005</td><td class="r">2,673,872</td><td class="r">10,368,480</td><td class="r">10,201,059</td><td class="r">20.5%</td></tr>
+          <tr><td>2010</td><td class="r">3,943,219</td><td class="r">14,938,306</td><td class="r">14,646,682</td><td class="r">20.9%</td></tr>
+          <tr><td>2015</td><td class="r">5,012,188</td><td class="r">16,238,616</td><td class="r">15,818,886</td><td class="r">23.6%</td></tr>
+          <tr><td>2019</td><td class="r">6,291,480</td><td class="r">18,636,029</td><td class="r">18,135,843</td><td class="r">25.2%</td></tr>
+          <tr><td>2020</td><td class="r">5,217,419</td><td class="r">17,311,867</td><td class="r">16,852,915</td><td class="r">23.2%</td></tr>
+          <tr><td>2022</td><td class="r">7,081,037</td><td class="r">24,557,340</td><td class="r">23,986,876</td><td class="r">22.4%</td></tr>
+          <tr><td>2024</td><td class="r">8,475,072</td><td class="r">23,583,364</td><td class="r">22,945,336</td><td class="r">26.4%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>서비스 비중은 2005년 20.5%에서 2024년 26.4%로 올랐다. 2020년의 급락(23.2%)과 2021년의 추가 하락은 여행·운송이 멈춘 동안 상품 교역이 먼저 회복한 결과이고, 2022년 이후의 반등은 그 역전이 풀린 것이다. 같은 질문을 항목별·나라쌍별로 내려가며 묻는 것이 이 DB의 용도다.</p>
+  </section>
+
+  <!-- ============ DB 구축 ============ -->
+  <section role="tabpanel" id="tab-build" aria-labelledby="t-build">
+    <h2 class="h">DB 구축</h2>
+    <p class="sub lead">어느 파일을 어디서 받아 어떻게 실었는지, 그리고 그 결과가 원본과 맞는지를 어떻게 확인했는지.</p>
+
+    <h3>원천</h3>
+    <p>두 자료 모두 OECD가 벌크 파일로 공개한다. 같은 자료가 SDMX API로도 나오지만, 전량을 받으려면 200회 넘는 호출이 되고 6단위 엔드포인트는 현재 오류를 낸다. 그래서 <b>수집은 벌크 파일로 하고 API는 교차검증에만</b> 쓴다. BaTIS는 WTO도 같은 이름의 파일을 배포하는데 <b>내용이 다르다</b> — 아래 표의 각주를 볼 것.</p>
+    <div class="tblwrap">
+      <table>
+        <caption>받은 원본 (2026-09-16 수집)</caption>
+        <thead><tr><th>자료</th><th>파일</th><th class="r">크기</th><th>판</th><th>담긴 것</th></tr></thead>
+        <tbody>
+          <tr><td>BaTIS</td><td><code>OECD-WTO_BATIS_BPM6_December2025_bulk.zip</code></td><td class="r">489.6 MB</td><td>2025-12</td><td>CSV 1개(2.40 GB) + 코드표 xlsx</td></tr>
+          <tr><td>BIMTS</td><td><code>HS17_2D_DE_1995_To_2024.zip</code></td><td class="r">590.8 MB</td><td>2026-05</td><td>CSV 6개(연도 구간별)</td></tr>
+          <tr><td>BIMTS</td><td><code>CPA_2D_DE_1995_To_2024.zip</code></td><td class="r">690.7 MB</td><td>2026-05</td><td>CSV 6개</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><b>같은 이름, 다른 파일.</b> WTO가 배포하는 <code>OECD-WTO_BATIS_data_BPM6-1.zip</code>(508.8 MB)은 열이 9개고 2자 코드(<code>KR</code>)에 <code>X</code>/<code>M</code>, 방법론 24코드다. OECD가 배포하는 판은 열이 12개고 ISO3 코드(<code>KOR</code>)에 <code>EXP</code>/<code>IMP</code>, 방법론 37코드이며 국가 그룹도 더 많다. <b>넓은 쪽인 OECD판을 정본으로 삼았다.</b> 두 판을 섞으면 코드가 맞지 않는다.</div>
+
+    <p>BIMTS는 4단위·6단위 파일도 같은 자리에 있다(6단위는 parquet 합계 6.5 GB). 이번 판단은 2단위까지다 — 서비스가 본체이고 상품은 대조군이기 때문이다. 6단위를 받을 이유가 생긴다면 그것은 해상도가 아니라 <b>6단위에만 붙는 수출국·수입국별 보고/추정 플래그</b> 때문일 것이다.</p>
+
+    <h3>파이프라인</h3>
+    <p>스크립트는 번호 순으로 돌린다. 원본 zip은 <code>data/raw/&lt;자료&gt;/&lt;판&gt;/</code>에 그대로 두고, 압축을 interim으로 풀어 parquet을 거쳐 DuckDB에 싣는다. 전 과정이 10분 안쪽이다(내려받기 시간이 대부분).</p>
+    <ol class="steps">
+      <li>
+        <h4>판 점검 — <code>00_probe_source.py</code></h4>
+        <p>원격 파일의 크기·갱신일을 보유본의 manifest와 대조한다. 내려받지 않는다. 받을 파일 목록은 우리가 적어 두지 않고 <b>SDMX 데이터흐름의 주석에서 읽어 온다</b> — OECD가 파일을 갈면 목록도 따라 바뀐다.</p>
+      </li>
+      <li>
+        <h4>수집 — <code>01_fetch_batis.py</code>, <code>02_fetch_bimts.py</code></h4>
+        <p>이어받기와 sha256 기록이 붙은 내려받기. 방법론 PDF도 함께 받아 <code>data/external/</code>에 둔다 — 값이 어떻게 만들어졌는지는 그 문서에만 있다.</p>
+      </li>
+      <li>
+        <h4>적재 — <code>03_load_batis.py</code>, <code>04_load_bimts.py</code></h4>
+        <p>열 구성이 기대와 다르면 <b>중단한다</b>(판이 바뀐 신호다). BIMTS 원본은 SDMX-CSV라 <code>FREQ=A</code>·<code>UNIT_MEASURE=USD_EXC</code> 같은 열이 파일 전체에서 한 값인데, <b>상수임을 확인한 뒤에만</b> fact에서 빼고 <code>meta_constants</code>에 값으로 남긴다.</p>
+      </li>
+      <li>
+        <h4>차원 구축 — <code>05_build_dims.py</code>, <code>05b_build_product_dims.py</code></h4>
+        <p>경제·항목·방법론·품목 코드를 dim으로 만든다. 경제 코드는 <b>출처가 셋인데 서로 어긋나서</b> 하나를 고르지 않고 나란히 두었다(아래).</p>
+      </li>
+      <li>
+        <h4>검증 — <code>06_validate.py</code></h4>
+        <p>정의적 항등, 집계 정합, 코드 매칭, API 교차대조를 한 스크립트에서 돌리고 PASS/WARN/FAIL로 남긴다.</p>
+      </li>
+    </ol>
+
+    <h3>경제 코드 — 출처 셋이 어긋난다</h3>
+    <p>BaTIS zip에 동봉된 코드표는 <b>자료와 코드가 맞지 않는다.</b> 코드표의 <code>WLD</code>·<code>RWD</code>·<code>E_EU</code>·<code>ANT</code>·<code>SCG</code>는 자료에 한 번도 나오지 않고, 자료에 쓰이는 <code>W</code>·<code>WXD</code>·<code>WXOECD</code>·<code>WXEU27_2020</code>·<code>ANT_F</code>·<code>SCG_F</code>는 코드표에 없다. 그래서 <code>dim_area</code>는 세 출처를 열로 나란히 둔다 — 자료 자신의 성질 열(정본), 동봉 코드표, OECD SDMX <code>CL_AREA</code>. 이름은 <code>CL_AREA</code>가 가장 넓어 자료에 쓰인 208개 코드를 모두 덮는다. BIMTS에만 나오는 코드 10개(<code>BEL_LUX</code>·<code>SACU</code>·<code>SSD</code> 등)도 같은 표에 담되 성질은 NULL로 두고, 집계 여부는 <code>CL_AREA</code>의 구성 규칙으로 판정해 <code>is_aggregate</code>에 적는다.</p>
+
+    <h3>검증 결과</h3>
+    <div class="verdict">
+      <span class="pill ok">PASS 30</span>
+      <span class="pill warn">WARN 7</span>
+      <span class="pill fail">FAIL 0</span>
+      <span class="pill info">INFO 9</span>
+    </div>
+    <p>WARN 7건은 전부 원본의 반올림 잔차다. 절대차를 총액으로 나누면 0.000%이고 최대차도 1만 5천 달러 수준이다. 아래는 주요 항목만 옮긴 것이다.</p>
+    <div class="tblwrap">
+      <table>
+        <caption>검증 요약 (<code>06_validate.py</code>, 2026-09-16 실행)</caption>
+        <thead><tr><th>항목</th><th>결과</th><th>수치</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="3">BaTIS (서비스)</td></tr>
+          <tr><td>균형치 대칭 — 개별 경제쌍</td><td><span class="pill ok">PASS</span></td><td>24,833,070쌍 · 불일치 0 · 최대차 <b>0</b></td></tr>
+          <tr><td>균형치 대칭 — 그룹이 낀 쌍</td><td><span class="pill info">INFO</span></td><td>1,860쌍 중 620 불일치 (집계라 같을 이유가 없다)</td></tr>
+          <tr><td>파생항목 재계산 8종</td><td><span class="pill ok">PASS</span></td><td>불일치 0 · 최대차 4e-06</td></tr>
+          <tr><td>총계 S = 대분류 합 (보고치)</td><td><span class="pill info">INFO</span></td><td>32,562셀 중 8,258 불일치 · 절대차/총액 0.217%</td></tr>
+          <tr><td>총계 S = 대분류 합 (조정치·균형치)</td><td><span class="pill warn">WARN</span></td><td>160만 셀 중 897 / 38 · 절대차/총액 0.000%</td></tr>
+          <tr><td>하위 합 5종 (SC·SD·SI·SJ·SK)</td><td><span class="pill warn">WARN</span></td><td>셀당 500~800 불일치 · 최대차 0.015</td></tr>
+          <tr><td>파트너 W = 개별 경제 합</td><td><span class="pill ok">PASS</span></td><td>보고국 200개 전부 일치 · 최대차 1.2e-05</td></tr>
+          <tr><td>코드 매칭 5종 · 기간 연속성</td><td><span class="pill ok">PASS</span></td><td>미매칭 0 · 2005–2024 빠짐 없음</td></tr>
+          <tr><td>SDMX API 교차검증</td><td><span class="pill ok">PASS</span></td><td>한국 2023년 25,026셀 · 불일치 0 · 최대차 0</td></tr>
+          <tr class="grp"><td colspan="3">BIMTS (상품)</td></tr>
+          <tr><td>총계 <code>_T</code> = 품목 합 (HS 2단위)</td><td><span class="pill ok">PASS</span></td><td>61,876셀 · 최대차 5e-09</td></tr>
+          <tr><td>총계 <code>_T</code> = 섹션 + 미분류 (CPA)</td><td><span class="pill ok">PASS</span></td><td>61,910셀 · 최대차 7e-09</td></tr>
+          <tr><td>수입국 W = 개별 수입국 합</td><td><span class="pill ok">PASS</span></td><td>23,335,127 = 23,335,127 (2023, 백만 USD)</td></tr>
+          <tr><td>코드 매칭 · 기간 연속성</td><td><span class="pill ok">PASS</span></td><td>미매칭 0 · 1995–2024 빠짐 없음</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><b>WARN을 결함으로 다시 지적하지 말 것.</b> 하위 합의 어긋남은 OECD가 하위 항목을 따로 추정·균형화하면서 남은 잔차다. 160만 셀 중 0.05% 미만이고 크기도 반올림 수준이다. 다시 볼 이유는 자릿수가 달라졌을 때뿐이다.</div>
+  </section>
+
+  <!-- ============ 균형화와 추정 ============ -->
+  <section role="tabpanel" id="tab-balance" aria-labelledby="t-balance">
+    <h2 class="h">균형화와 추정</h2>
+    <p class="sub lead">이 자료의 숫자가 어디서 오는지 — 보고된 것, 채워 넣은 것, 화해시킨 것을 가르는 법.</p>
+
+    <h3>값이 셋이다</h3>
+    <p>BaTIS는 같은 칸에 세 값을 준다. 어느 것을 쓰는지 밝히지 않은 분석은 재현되지 않는다.</p>
+    <div class="tblwrap">
+      <table>
+        <caption>세 값의 뜻과 쓸 자리</caption>
+        <thead><tr><th>열</th><th>무엇인가</th><th>쓸 자리</th></tr></thead>
+        <tbody>
+          <tr><td><code>reported_value</code></td><td>통계당국이 실제로 보고한 값. <b>전체 행의 3.5%에만 있다</b></td><td>각국 공표치와 맞춰야 할 때, 보고 여부 자체를 연구할 때</td></tr>
+          <tr><td><code>final_value</code></td><td>보고치 + OECD·WTO의 추정·조정. 내부 정합이 맞는다</td><td>결측 없는 완전한 행렬이 필요하되 대칭까지는 요구하지 않을 때</td></tr>
+          <tr><td><code>balanced_value</code></td><td>수출과 거울상 수입을 화해시킨 값. 개별 경제쌍에서 <b>수출 = 상대국 수입이 오차 0으로</b> 성립</td><td>나라쌍 행렬이 닫혀야 하는 분석(네트워크, 투입산출 연계)</td></tr>
+          <tr><td><code>methodology</code></td><td>그 칸이 어떻게 만들어졌는지의 37개 코드</td><td>추정분을 걸러 내거나 비중을 잴 때. <code>dim_methodology.mclass</code>로 묶어 쓴다</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>얼마나 보고되고 얼마나 추정되는가</h3>
+    <p>총서비스를 개별 경제쌍만 놓고 방법론 분류별 비중을 재면 <b>행 수와 금액이 정반대로 말한다.</b> 모형 추정 칸이 행의 79%를 차지하지만 금액으로는 22% 안팎이다. 작은 나라쌍이 많고 큰 나라쌍은 보고되기 때문이다.</p>
+    <div class="tblwrap">
+      <table>
+        <caption>방법론 분류별 비중 (총서비스, 개별 경제쌍, 행% / 금액%)</caption>
+        <thead><tr><th>연도</th><th class="r">보고</th><th class="r">조정·보간</th><th class="r">모형 추정</th></tr></thead>
+        <tbody>
+          <tr><td>2005</td><td class="r">1.1% / 26.4%</td><td class="r">19.9% / 54.9%</td><td class="r">79.0% / 18.7%</td></tr>
+          <tr><td>2015</td><td class="r">13.8% / 50.5%</td><td class="r">7.0% / 27.5%</td><td class="r">79.2% / 22.0%</td></tr>
+          <tr><td>2024</td><td class="r">4.0% / 37.6%</td><td class="r">16.8% / 40.1%</td><td class="r">79.2% / 22.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>2024년에 보고 비중이 도로 내려앉은 것은 자료가 나빠져서가 아니라 <b>최신 연도의 보고가 아직 다 들어오지 않았기 때문</b>이다. 총서비스의 보고 커버리지(행 기준)는 2015~2022년에 16~17%로 안정적이다가 2024년 5.1%로 떨어진다. 최신 연도를 추세 분석에 그대로 넣으면 추정 비중이 급등한 구간을 실제 변화로 오독하게 된다.</p>
+    <div class="tblwrap">
+      <table>
+        <caption>총서비스 보고 커버리지 (전체 행 기준)</caption>
+        <thead><tr><th>연도</th><th class="r">2005</th><th class="r">2010</th><th class="r">2015</th><th class="r">2019</th><th class="r">2020</th><th class="r">2022</th><th class="r">2024</th></tr></thead>
+        <tbody>
+          <tr><td>행 기준</td><td class="r">1.8%</td><td class="r">11.9%</td><td class="r">15.8%</td><td class="r">16.7%</td><td class="r">16.9%</td><td class="r">16.9%</td><td class="r">5.1%</td></tr>
+          <tr><td>금액 기준</td><td class="r">23.0%</td><td class="r">29.4%</td><td class="r">33.3%</td><td class="r">32.5%</td><td class="r">32.3%</td><td class="r">32.0%</td><td class="r">25.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>균형치는 국내 공표치와 다르다</h3>
+    <p>균형화는 양국 보고를 절충해 값을 옮긴다. 그래서 같은 나라의 같은 해 수출이 보고치와 균형치에서 다르게 나온다. 한국의 총서비스가 그 예다.</p>
+    <div class="tblwrap">
+      <table>
+        <caption>한국 총서비스 (백만 USD)</caption>
+        <thead><tr><th>연도</th><th>방향</th><th class="r">보고치</th><th class="r">균형치</th><th class="r">차이</th></tr></thead>
+        <tbody>
+          <tr><td>2023</td><td>수출</td><td class="r">125,666</td><td class="r">107,385</td><td class="r">−14.5%</td></tr>
+          <tr><td>2023</td><td>수입</td><td class="r">152,490</td><td class="r">130,499</td><td class="r">−14.4%</td></tr>
+          <tr><td>2024</td><td>수출</td><td class="r">138,953</td><td class="r">118,185</td><td class="r">−14.9%</td></tr>
+          <tr><td>2024</td><td>수입</td><td class="r">162,654</td><td class="r">142,584</td><td class="r">−12.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>세계 총계에서도 방향이 보인다. 균형치는 조정치 대비 수출 95.3%, 수입 103.4%로 양쪽이 7.74조 달러(2023년)에서 만난다. <b>공표치와 맞추려면 보고치를, 나라쌍 정합이 필요하면 균형치를</b> 쓰고 둘을 한 표에 섞지 않는다.</p>
+
+    <div class="note warn"><b>균형치로는 비대칭을 연구할 수 없다.</b> 개별 경제쌍 2,483만 쌍에서 「A의 대B 수출 = B의 대A 수입」이 최대차 <b>0</b>으로 성립한다. 반올림 오차조차 없다 — OECD가 한 번 계산한 숫자를 양쪽에 그대로 써 넣기 때문이다. 수출입 비대칭(mirror asymmetry)은 <code>reported_value</code>에만 남아 있고, 그것은 전체의 3.5%다.</div>
+
+    <h3>상품 쪽의 균형화 — 재수출 조정</h3>
+    <p>BIMTS는 균형치를 둘로 낸다. <code>B</code>는 재수출을 포함한 총 균형치이고, <code>B_ADJ_RX</code>는 중계무역 흐름을 찾아 생산국으로 되돌린 값이다. OECD는 후자를 권한다 — 생산자와 최종 사용자 사이의 흐름이 이미 잡혀 있는데 중계지를 거친 흐름을 또 세면 이중계상이 되기 때문이다. 세계 총액에서 둘의 차이는 2024년 2.7%(23,583,364 대 22,945,336)이고, 나라별로는 훨씬 크게 벌어진다.</p>
+    <div class="note"><b>BIMTS에는 보고치가 없다.</b> 배포되는 값은 균형치 둘뿐이다. 상품에서 「보고치 대 균형치」를 비교하려면 UN Comtrade 원자료가 따로 필요하다. 이 DB는 그 경계를 흐리지 않는다.</div>
+  </section>
+
+  <!-- ============ 데이터 함정 ============ -->
+  <section role="tabpanel" id="tab-traps" aria-labelledby="t-traps">
+    <h2 class="h">데이터 함정</h2>
+    <p class="sub lead">모르고 쓰면 틀리는 것들. 전부 이 DB를 만들면서 실제로 겪었거나 실측으로 확인한 것이다.</p>
+
+    <div class="note warn">주황색 카드는 <b>결과의 자릿수가 달라지는</b> 함정이다. 파란색은 알아 두면 좋은 보충이다.</div>
+
+    <div class="traps">
+      <div class="trap hot">
+        <div class="tref">집계 코드</div>
+        <h4>그룹을 개별과 함께 더하면 두 배가 된다</h4>
+        <p><code>W</code>(세계)·<code>EU27_2020</code>·<code>OECD</code>·<code>WXOECD</code>·<code>WXEU27_2020</code>은 집계이고 개별 경제와 같은 열에 섞여 있다. 실측으로 <b>파트너 <code>W</code> = 개별 경제 파트너 합</b>이 보고국 200개 전부에서 성립한다. 항상 <code>dim_area.is_aggregate</code>로 거를 것.</p>
+      </div>
+      <div class="trap hot">
+        <div class="tref">집계 코드</div>
+        <h4>단 <code>WXD</code>는 빼면 안 된다</h4>
+        <p><code>WXD</code>(Rest of the world)는 이름이 그룹처럼 보이지만 성질이 개별 경제(잔차)다. 목록에 없는 나라들을 모아 둔 것이라 개별 합에 <b>포함된다</b>. 이것까지 빼면 세계 총계가 모자란다.</p>
+      </div>
+      <div class="trap hot">
+        <div class="tref">CPA 2.1</div>
+        <h4>품목을 전부 더하면 여러 번 센다</h4>
+        <p><code>fact_bimts_cpa2</code>의 품목 열에는 섹션(<code>CPA_2_1_C</code>)·분류(<code>C10</code>)·묶음(<code>C10T12</code>)이 섞여 있다. 총계와 맞추려면 <b>섹션 + 미분류(<code>_X</code>)</b>만 더해야 한다. HS2017 2단위는 평평해서 이 문제가 없다.</p>
+      </div>
+      <div class="trap hot">
+        <div class="tref">최신 연도</div>
+        <h4>2024년은 아직 덜 보고됐다</h4>
+        <p>총서비스 보고 커버리지가 2022년 16.9%에서 2024년 5.1%로 떨어진다. 자료가 나빠진 것이 아니라 보고가 늦은 것이다. 최신 연도를 추세에 그대로 넣으면 추정 비중 급등을 실제 변화로 읽게 된다.</p>
+      </div>
+      <div class="trap hot">
+        <div class="tref">균형치</div>
+        <h4>비대칭 연구에 균형치를 쓰지 말 것</h4>
+        <p>개별 경제쌍에서 수출과 거울상 수입이 <b>최대차 0</b>으로 같다. 정의상 그렇게 만들어졌다. 비대칭은 <code>reported_value</code>에만 있고 그것은 전체의 3.5%다.</p>
+      </div>
+      <div class="trap hot">
+        <div class="tref">국별 총액</div>
+        <h4>각국 공표치와 다르다</h4>
+        <p>한국 2024년 서비스 수출이 보고 138,953 대 균형 118,185(백만 USD)로 14.9% 차이 난다. 상품 쪽은 더 크다 — 홍콩의 2024년 수출 총액이 154,704로 잡히는데, 중계무역을 생산국으로 되돌린 처리 때문으로 보인다. 국별 총액을 인용하기 전에 방법론 문서를 확인할 것.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">결측</div>
+        <h4>BIMTS의 0은 대체로 행이 없다</h4>
+        <p>OECD는 0 거래를 결측으로 표기해 파일을 줄였다고 설명한다. 다만 값이 정확히 0인 행이 HS 2단위에 3,546건, CPA에 23,912건 남아 있다. DB는 채우지도 지우지도 않는다 — 0으로 채울지는 분석 계층의 선택이다.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">방향</div>
+        <h4>BIMTS는 수출국 기준 단일 기록</h4>
+        <p><code>exporter</code>가 수출국, <code>importer</code>가 수입국이고 흐름이 한 번만 기록된다. 균형화 결과라 수입국 관점의 별도 행이 없다. 수입 기준 질의는 방향을 뒤집어야 한다.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">단위</div>
+        <h4>둘 다 백만 USD</h4>
+        <p>달러로 환산해 담지 않았다. BIMTS 원본의 <code>UNIT_MULT=6</code>은 상수라 fact에서 빼고 <code>meta_constants</code>에 남겼다. 값은 실수이므로 정수로 캐스팅하면 손실이 난다.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">코드표</div>
+        <h4>동봉 코드표가 자료와 어긋난다</h4>
+        <p>코드표에만 있는 코드 5개, 자료에만 있는 코드 6개가 있다. <code>dim_area</code>가 세 출처를 나란히 두는 이유다. 코드표 하나만 믿고 조인하면 조용히 행이 빠진다.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">판 갱신</div>
+        <h4>URL은 그대로, 내용만 바뀐다</h4>
+        <p>새 판은 과거 연도까지 다시 추정한다. 그래서 모든 fact에 <code>edition</code>이 있고 원본 zip과 sha256을 보존한다. 논문에 수치를 쓸 때는 판(2025-12 / 2026-05)을 반드시 밝힐 것.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">BPM5</div>
+        <h4>옛 판(1995–2012)과 섞지 말 것</h4>
+        <p>WTO는 BPM5 기준 BaTIS도 함께 배포한다. 국제기준이 달라 연결이 불가능하고 WTO 자신이 경고한다. 이 DB에는 넣지 않았다.</p>
+      </div>
+      <div class="trap">
+        <div class="tref">API</div>
+        <h4>SDMX 6단위 엔드포인트는 오류를 낸다</h4>
+        <p>BIMTS 6단위는 SDMX로 질의하면 500이 돌아온다(키 형태를 바꿔도 같다). 2단위·CPA는 정상이다. 6단위가 필요하면 파일로만 받을 수 있다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 받기·사용 ============ -->
+  <section role="tabpanel" id="tab-use" aria-labelledby="t-use">
+    <h2 class="h">받기·사용</h2>
+    <p class="sub lead">DB를 손에 넣어 로컬에서 분석하는 데 필요한 것을 안내한다.</p>
+
+    <p><b>먼저 알아둘 것 — 원본이 공개라 직접 만드는 편이 빠르다.</b> 이 DB의 원자료는 OECD가 누구에게나 공개하는 벌크 파일이고, 인증키가 필요 없다. 스크립트를 순서대로 돌리면 <b>10분 안쪽에</b> 같은 DB가 만들어진다(내려받기 1.8 GB, 만들어지는 DB 약 2 GB). 그래서 이 프로젝트는 완성된 DB 파일을 배포하기보다 <b>만드는 방법</b>을 배포한다.</p>
+
+    <ol class="steps">
+      <li>
+        <h4>패키지 설치</h4>
+        <p>터미널에서 아래를 실행한다. conda나 특정 파이썬 버전은 필요 없다.</p>
+        <pre><code>pip install duckdb pandas pyarrow requests openpyxl</code></pre>
+      </li>
+      <li>
+        <h4>원본 받기</h4>
+        <p>서비스(490 MB)와 상품 2단위(1.3 GB)를 받는다. 받은 파일은 <code>data/raw/&lt;자료&gt;/&lt;판&gt;/</code>에 sha256과 함께 남는다.</p>
+        <pre><code>python scripts/01_fetch_batis.py
+python scripts/02_fetch_bimts.py --depth 2d cpa</code></pre>
+      </li>
+      <li>
+        <h4>적재와 차원 구축</h4>
+        <p>압축을 풀어 parquet을 거쳐 DuckDB에 싣고, 코드표를 dim으로 만든다.</p>
+        <pre><code>python scripts/03_load_batis.py
+python scripts/04_load_bimts.py
+python scripts/05_build_dims.py
+python scripts/05b_build_product_dims.py</code></pre>
+      </li>
+      <li>
+        <h4>검증하고 열기</h4>
+        <p>검증이 FAIL 없이 끝나면 <code>data/processed/svcdb.duckdb</code>가 쓸 준비가 된 것이다.</p>
+        <pre><code>python scripts/06_validate.py
+python scripts/07_db_status.py</code></pre>
+      </li>
+    </ol>
+
+    <h3>무엇이 들어 있나 — 표 전체 목록</h3>
+<!-- DB_INVENTORY:START -->
+    <div class="tblwrap">
+      <table class="inv">
+        <caption>표 전체 목록 (<code>07_db_status.py</code>가 자동으로 채운다)</caption>
+        <thead><tr><th>표</th><th>설명</th><th class="r">행수</th><th>기간</th><th>단위 · 출처</th></tr></thead>
+        <tbody>
+          <tr><td><code>fact_batis</code> <span class="pill ok">fact</span></td><td>나라쌍 서비스 교역. EBOPS 2010 31항목 × 수출입. 보고치·조정치·균형치 셋과 방법론 코드를 한 행에 담는다</td><td class="r">50,172,380</td><td>2005–2024</td><td class="s">백만 USD · OECD-WTO BaTIS, BPM6 2025-12판</td></tr>
+          <tr><td><code>fact_bimts_hs2</code> <span class="pill ok">fact</span></td><td>나라쌍 상품 교역, HS2017 2단위(97개 장 + 총계). 균형치 두 종(B 총액, B_ADJ_RX 재수출 조정)</td><td class="r">52,380,894</td><td>1995–2024</td><td class="s">백만 USD · OECD BIMTS, 2026-05 파일</td></tr>
+          <tr><td><code>fact_bimts_cpa2</code> <span class="pill ok">fact</span></td><td>같은 자료를 CPA 2.1로 본 것. 섹션·분류·묶음이 섞인 계층이다</td><td class="r">40,136,616</td><td>1995–2024</td><td class="s">백만 USD · OECD BIMTS, 2026-05 파일</td></tr>
+          <tr><td><code>dim_area</code> <span class="pill info">dim</span></td><td>경제 코드. 자료의 성질 열·동봉 코드표·SDMX CL_AREA 세 출처를 나란히 두고, 집계 여부를 is_aggregate로 판정</td><td class="r">223</td><td>—</td><td class="s">세 출처 병합</td></tr>
+          <tr><td><code>dim_service</code> <span class="pill info">dim</span></td><td>EBOPS 2010 항목. 표준 27개와 파생 4개(SOX·SOX1·SPX1·SPX4)의 산식</td><td class="r">31</td><td>—</td><td class="s">BaTIS 동봉 코드표</td></tr>
+          <tr><td><code>dim_methodology</code> <span class="pill info">dim</span></td><td>BaTIS 방법론 코드 37개. mclass는 접두사로 매긴 우리 분류(보고/모형추정/조정·보간/집계)</td><td class="r">37</td><td>—</td><td class="s">BaTIS 동봉 코드표</td></tr>
+          <tr><td><code>dim_flow</code> <span class="pill info">dim</span></td><td>EXP / IMP</td><td class="r">2</td><td>—</td><td class="s">BaTIS 동봉 코드표</td></tr>
+          <tr><td><code>dim_code_type</code> <span class="pill info">dim</span></td><td>코드 성질(c 국가 · g 그룹 · s 표준항목 · d 파생항목)</td><td class="r">4</td><td>—</td><td class="s">BaTIS 동봉 코드표</td></tr>
+          <tr><td><code>dim_hs2017</code> <span class="pill info">dim</span></td><td>HS2017 품목 코드. level(2·4·6)은 코드 자릿수에서 매겼다</td><td class="r">6,905</td><td>—</td><td class="s">OECD SDMX CL_PRODUCT_HS2017</td></tr>
+          <tr><td><code>dim_cpa21</code> <span class="pill info">dim</span></td><td>CPA 2.1 품목 코드</td><td class="r">5,566</td><td>—</td><td class="s">OECD SDMX CL_PRODUCT_CPA_2_1</td></tr>
+          <tr><td><code>dim_edition</code> <span class="pill info">dim</span></td><td>판 이력. 어느 판을 언제 어느 파일에서 실었는지</td><td class="r">3</td><td>—</td><td class="s">우리가 기록</td></tr>
+          <tr><td><code>meta_constants</code> <span class="pill warn">meta</span></td><td>적재할 때 상수여서 fact에서 뺀 열과 그 값</td><td class="r">16</td><td>—</td><td class="s">우리가 기록</td></tr>
+        </tbody>
+      </table>
+    </div>
+<!-- DB_INVENTORY:END -->
+
+    <h3>질의 예</h3>
+    <p>세 가지만 익히면 대부분의 질문에 답할 수 있다 — 값 셋 중 하나를 고르고, 집계 코드를 거르고, 방법론으로 추정분을 가려내는 것이다.</p>
+
+    <h4>한국의 서비스 수출 상대국 (2024년, 균형치)</h4>
+    <pre><code>import duckdb
+con = duckdb.connect("data/processed/svcdb.duckdb", read_only=True)
+
+con.execute("""
+    SELECT f.partner, a.name_sdmx, f.balanced_value AS musd
+    FROM fact_batis f
+    JOIN dim_area a ON f.partner = a.code AND NOT a.is_aggregate
+    WHERE f.reporter='KOR' AND f.year=2024 AND f.flow='EXP' AND f.item_code='S'
+    ORDER BY musd DESC LIMIT 10
+""").df()</code></pre>
+    <p>미국 22,043 · 중국 19,449 · 일본 7,880 · 싱가포르 7,106 · 홍콩 5,386(백만 USD) 순으로 나온다.</p>
+
+    <h4>추정분을 걸러 낸 나라쌍만 보기</h4>
+    <pre><code>SELECT f.reporter, f.partner, f.reported_value
+FROM fact_batis f
+JOIN dim_methodology m ON f.methodology = m.code
+WHERE m.mclass = 'reported' AND f.item_code='S' AND f.year=2023 AND f.flow='EXP'</code></pre>
+
+    <h4>서비스와 상품을 한 해에 나란히</h4>
+    <pre><code>WITH svc AS (
+  SELECT sum(balanced_value) v FROM fact_batis
+  WHERE year=2024 AND flow='EXP' AND item_code='S' AND reporter='W' AND partner='W'),
+goods AS (
+  SELECT sum(value) v FROM fact_bimts_hs2 f
+  JOIN dim_area ae ON f.exporter=ae.code AND NOT ae.is_aggregate
+  JOIN dim_area ai ON f.importer=ai.code AND NOT ai.is_aggregate
+  WHERE year=2024 AND product='_T' AND adjustment='B_ADJ_RX')
+SELECT svc.v AS services, goods.v AS goods FROM svc, goods</code></pre>
+
+    <h3>어디서 받았나</h3>
+    <div class="tblwrap">
+      <table>
+        <caption>원자료 출처</caption>
+        <thead><tr><th>자료</th><th>받는 곳</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>BaTIS (서비스)</td><td><a href="https://www.oecd.org/en/data/datasets/oecd-balanced-trade-statistics.html" target="_blank" rel="noopener">OECD 균형 교역 통계</a> · <a href="https://www.wto.org/english/res_e/statis_e/gstdh_batis_e.htm" target="_blank" rel="noopener">WTO BaTIS</a></td><td>OECD 배포본이 정본. 두 판의 코드 체계가 다르다</td></tr>
+          <tr><td>BIMTS (상품)</td><td><a href="https://data-explorer.oecd.org/" target="_blank" rel="noopener">OECD 데이터 탐색기</a>의 관련 파일</td><td>파일 목록은 SDMX 주석에서 자동으로 읽는다</td></tr>
+          <tr><td>코드 체계</td><td>OECD SDMX <code>CL_AREA</code>, <code>CL_PRODUCT_HS2017</code>, <code>CL_PRODUCT_CPA_2_1</code></td><td>이름과 계층의 출처</td></tr>
+          <tr><td>방법론 문서</td><td>BaTIS·BIMTS 기술 문서 PDF</td><td><code>data/external/</code>에 함께 보존</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 연구 ============ -->
+  <section role="tabpanel" id="tab-research" aria-labelledby="t-research">
+    <h2 class="h">연구</h2>
+    <p class="sub lead">이 DB 위에서 수행한 분석을 싣는 자리다.</p>
+    <div class="empty">
+      <h3>준비 중</h3>
+      <p>아직 실린 연구가 없다. 완성되는 대로 논문과 재현 노트북을 함께 올린다.</p>
+    </div>
+  </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>출처.</b> OECD와 WTO가 공개하는 균형 서비스 교역 통계(BaTIS, BPM6 2025년 12월판)와 OECD의 균형 상품 교역 통계(BIMTS, 2026년 5월 파일)를 이용했다. 자료별 받는 곳은 <a href="#" onclick="showTab('use');return false">받기·사용</a> 탭의 「어디서 받았나」에 있다. 인용할 때는 판을 함께 밝힌다 — 판이 바뀌면 과거 연도의 수치도 바뀐다. OECD 콘텐츠는 2024년 7월 이후 CC BY 4.0이 기본이며, BaTIS는 OECD와 WTO의 공동 산출물이므로 양쪽을 함께 밝힌다. OECD와 WTO가 이 DB를 후원하거나 특수 관계에 있지 않다. 이 저장소의 코드와 문서는 <a href="https://github.com/pilsunchoi/Services/blob/main/LICENSE" target="_blank" rel="noopener">MIT 라이선스</a>를 따르며, 원자료는 그 대상이 아니다(<a href="https://github.com/pilsunchoi/Services/blob/main/NOTICE.md" target="_blank" rel="noopener">NOTICE</a>).</p>
+  </div>
+</footer>
+
+<script>
+  var TABS = ["overview","build","balance","traps","use","research"];
+  function showTab(name){
+    TABS.forEach(function(t){
+      var btn = document.getElementById("t-"+t);
+      var panel = document.getElementById("tab-"+t);
+      var on = (t === name);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+      panel.classList.toggle("active", on);
+    });
+    if (window.scrollY > 0) window.scrollTo({top:0, behavior:"auto"});
+  }
+  TABS.forEach(function(t){
+    document.getElementById("t-"+t).addEventListener("click", function(){ showTab(t); });
+  });
+</script>
