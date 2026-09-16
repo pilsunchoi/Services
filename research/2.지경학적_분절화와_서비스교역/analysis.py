@@ -228,7 +228,7 @@ ann_d3.to_csv(OUT / "annual_D3.csv", encoding="utf-8-sig")
 S["annual_D3"] = {int(y): {k: r(v, 2) for k, v in row.items()} for y, row in ann_d3.iterrows()}
 
 fig, axes = plt.subplots(1, 2, figsize=(10.2, 3.9), sharey=False)
-for ax, (tbl, title) in zip(axes, ((ann_df, "(가) D1"), (ann_d3, "(나) D3"))):
+for ax, (tbl, title) in zip(axes, ((ann_df, "(가) D1: 근접 사분위(2015~2017)"), (ann_d3, "(나) D3: 좁은 블록(비우호국 대 중·러 핵심)"))):
     ax.axvspan(2019.5, 2021.5, color="0.93", lw=0)
     for x in (2018, 2022):
         ax.axvline(x, color="0.55", lw=0.8, ls=":")
@@ -236,7 +236,7 @@ for ax, (tbl, title) in zip(axes, ((ann_df, "(가) D1"), (ann_d3, "(나) D3"))):
     ax.plot(tbl.index, tbl.svc_bal, color="black", lw=1.6, ls="--", label="서비스 (BaTIS 균형치)")
     ax.plot(tbl.index, tbl.svc_rep, color="0.45", lw=1.3, marker="o", ms=3.2, mfc="white", mec="0.45",
             label="서비스 (보고치)")
-    ax.set_title(title, loc="left", fontsize=10)  # 칸 표지. 설명 제목은 본문이 맡는다
+    ax.set_title(title, fontsize=10.5)  # 칸 제목은 그림이, 그림 전체 제목은 본문이 맡는다
     ax.set_ylabel("블록 간 교역 비중 (%)")
     year_axis(ax)
 h, l = axes[0].get_legend_handles_labels()
@@ -454,13 +454,13 @@ ax = axes[0]
 ax.plot(ari.index, ari.goods_q_d1, color="black", lw=1.6, label="상품")
 ax.plot(ari.index, ari.svc_q_d1, color="black", lw=1.6, ls="--", label="서비스")
 ax.set_ylabel("모듈러리티")
-ax.set_title("(가) 블록 모듈러리티", loc="left", fontsize=10)
+ax.set_title("(가) 블록 구분(D1)의 가중 모듈러리티", fontsize=10.5)
 ax.legend(loc="upper left")
 ax = axes[1]
 ax.plot(ari.index, ari.goods_ari, color="black", lw=1.6, label="상품")
 ax.plot(ari.index, ari.svc_ari, color="black", lw=1.6, ls="--", label="서비스")
 ax.set_ylabel("조정 랜드 지수")
-ax.set_title("(나) 군집 일치도", loc="left", fontsize=10)
+ax.set_title("(나) Leiden 군집과 D1 블록의 일치도(20회 평균)", fontsize=10.5)
 fig.tight_layout()
 fig.savefig(IMG / "fig3_network.png")
 plt.close(fig)
