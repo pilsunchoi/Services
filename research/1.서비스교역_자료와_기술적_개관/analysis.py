@@ -25,7 +25,8 @@ OUT = HERE / "out"
 IMG.mkdir(exist_ok=True)
 OUT.mkdir(exist_ok=True)
 
-# 그림 표준: 흑백, 300dpi, 위·오른쪽 축선 제거, 격자 0.87, Malgun Gothic
+# 그림 표준: 흑백, 300dpi, 위·오른쪽 축선 제거, 격자 0.87, Malgun Gothic.
+# 그림에는 제목을 넣지 않는다 — 제목은 본문의 그림 번호 줄이 맡는다.
 plt.rcParams.update({
     "font.family": "Malgun Gothic", "axes.unicode_minus": False,
     "figure.dpi": 110, "savefig.dpi": 300, "savefig.bbox": "tight",
@@ -89,7 +90,6 @@ ax2.spines["top"].set_visible(False)
 h1, l1 = ax.get_legend_handles_labels()
 h2, l2 = ax2.get_legend_handles_labels()
 ax.legend(h1 + h2, l1 + l2, loc="upper left")
-ax.set_title("세계 수출: 상품과 서비스 (균형치, 개별 경제쌍 합)")
 year_axis(ax)
 fig.savefig(IMG / "fig1_world.png")
 plt.close(fig)
@@ -121,7 +121,6 @@ styles = [("-", "black"), ("--", "black"), (":", "black"),
 for (code, label), (ls, c) in zip(NAMES.items(), styles):
     ax.plot(piv.index, piv[code], ls=ls, color=c, lw=1.5, label=label)
 ax.set_ylabel("총서비스 대비 비중 (%)")
-ax.set_title("세계 서비스 수출의 항목 구성 (균형치)")
 ax.legend(ncol=2, loc="upper center")
 ax.set_ylim(0, 30)
 year_axis(ax)
@@ -172,7 +171,6 @@ ax.plot(cov.year, cov.pct_rows, color="black", lw=1.4, ls="--", label="보고 �
 ax.plot(mp.index, mp["model"], color="0.45", lw=1.5, ls=":", label="모형 추정 비중(금액)")
 ax.set_ylabel("%")
 ax.set_ylim(0, 60)
-ax.set_title("총서비스의 보고 커버리지와 추정 비중")
 ax.legend(loc="upper left")
 year_axis(ax)
 fig.savefig(IMG / "fig3_coverage.png")
@@ -242,7 +240,6 @@ ax.hist(a2019.pct_gap.clip(upper=200), bins=40, color="0.82", edgecolor="black",
 ax.axvline(a2019.pct_gap.median(), color="black", ls="--", lw=1.2)
 ax.set_xlabel("수출 보고와 상대국 수입 보고의 차이 (%, 두 값 평균 대비)")
 ax.set_ylabel("나라쌍 수")
-ax.set_title("양쪽이 모두 보고한 나라쌍의 비대칭 (2019년, 총서비스)")
 ax.annotate(f"중위 {a2019.pct_gap.median():.0f}%",
             xy=(a2019.pct_gap.median(), ax.get_ylim()[1] * .82),
             xytext=(a2019.pct_gap.median() + 22, ax.get_ylim()[1] * .82),
@@ -314,7 +311,6 @@ ax.plot(yrs, [S["korea_series"][y]["imp_bal"] / 1000 for y in yrs], color="black
 ax.plot(yrs, [kg[y] / 1000 for y in yrs if y in kg.index], color="0.45", lw=1.5, ls=":",
         label="상품 수출(재수출 조정)")
 ax.set_ylabel("십억 달러")
-ax.set_title("한국의 서비스와 상품 교역 (균형치)")
 ax.legend(loc="upper left")
 year_axis(ax)
 fig.savefig(IMG / "fig5_korea.png")
