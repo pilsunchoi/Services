@@ -122,7 +122,7 @@ for (code, label), (ls, c) in zip(NAMES.items(), styles):
     ax.plot(piv.index, piv[code], ls=ls, color=c, lw=1.5, label=label)
 ax.set_ylabel("총서비스 대비 비중 (%)")
 ax.legend(ncol=2, loc="upper center")
-ax.set_ylim(0, 30)
+ax.set_ylim(0, 40)  # 범례가 선과 겹치지 않도록 위쪽 여유를 둔다
 year_axis(ax)
 fig.savefig(IMG / "fig2_items.png")
 plt.close(fig)
