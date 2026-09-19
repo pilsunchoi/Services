@@ -63,8 +63,9 @@ con.execute("""
    한국의 위치. [재현 노트북](research/01-data-overview/reproduce.ipynb)
 2. [지경학적 분절화는 서비스 교역에서도 일어나는가](research/02-fragmentation/paper.md)
    — 같은 국가쌍에서 상품과 서비스의 블록 간 교역 비중을 비교. 네 가지 블록 정의, 서비스 범주 분해,
-   교역망 구조. [재현 노트북](research/02-fragmentation/reproduce.ipynb). 이념점수 원자료는
-   `research/02-fragmentation/fetch_unga.py`가 받고, 상품 대조 계열(BACI)은 TradeNetworkAtlas 프로젝트의 DB를 읽는다.
+   교역망 구조. [재현 노트북](research/02-fragmentation/reproduce.ipynb) 하나에 블록 정의부터
+   그림까지 다 들어 있다. 이념점수 원자료는 노트북이 하버드 데이터버스에서 받고, 상품 대조 계열(BACI)은
+   TradeNetworkAtlas 프로젝트의 DB를 읽는다.
 
 ## 파이프라인
 
