@@ -12,8 +12,8 @@
   - 기간 통계는 연도 평균이 아니라 기간 합산 비율(기간 동안의 블록 간 합 / 전체 합)이다.
   - 중력모형은 쓰지 않는다. 블록 크기 변화는 집약도 I = S / E로 따로 본다.
 
-  python research/2.지경학적_분절화와_서비스교역/blocs.py
-  python research/2.지경학적_분절화와_서비스교역/analysis.py
+  python research/02-fragmentation/blocs.py
+  python research/02-fragmentation/analysis.py
 """
 from __future__ import annotations
 

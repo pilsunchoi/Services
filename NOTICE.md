@@ -44,7 +44,7 @@ DB 실물(`svcdb.duckdb`, 약 2 GB)은 이 저장소에 없다. 원자료가 인
 - `dim_hs2017.level` — HS 코드 자릿수(2·4·6)에서 매긴 단위.
 
 만든 방법과 한계는 대시보드의 「DB 구축」·「균형화와 추정」 탭과
-[`docs/DB_구축_원칙.md`](docs/DB_구축_원칙.md)에 있다.
+[`docs/db-principles.md`](docs/db-principles.md)에 있다.
 
 ---
 

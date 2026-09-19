@@ -1,10 +1,10 @@
 """연구 1의 수치와 그림을 만든다.
 
 본문이 인용하는 수치는 전부 여기서 나온다. 결과는 out/stats.json에 쌓고
-그림은 img/에 떨군다. 재현 노트북(overview.ipynb)은 같은 질의를 다시 돌려
+그림은 img/에 떨군다. 재현 노트북(reproduce.ipynb)은 같은 질의를 다시 돌려
 본문 수치와 대조한다.
 
-  python research/1.서비스교역_자료와_기술적_개관/analysis.py
+  python research/01-data-overview/analysis.py
 """
 from __future__ import annotations
 

@@ -23,7 +23,7 @@
 이념점수 출처: Bailey, Strezhnev & Voeten (2017), 하버드 데이터버스 doi:10.7910/DVN/LEJUQZ
 파일 IdealpointestimatesFP_2026FP.csv (최종 통과 표결 기준, 1946~2025).
 
-  python research/2.지경학적_분절화와_서비스교역/blocs.py
+  python research/02-fragmentation/blocs.py
 """
 from __future__ import annotations
 

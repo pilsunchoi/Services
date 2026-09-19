@@ -103,8 +103,8 @@ BaTIS는 보고치(`Reported_value`)를 함께 준다. **BIMTS는 주지 않는�
 ```
 C:\Work\Projects\Services\
 ├── docs/
-│   ├── 데이터_수집_계획.md        (이 문서)
-│   └── DB_구축_원칙.md            (수집 후 확정 사실로 승격해 작성)
+│   ├── collection-plan.md         (이 문서)
+│   └── db-principles.md           (수집 후 확정 사실로 승격해 작성)
 ├── scripts/
 │   ├── 00_probe_source.py         판 확인·해시·변경 감지
 │   ├── 01_fetch_batis.py          벌크 zip 수집(재개 가능)
@@ -226,7 +226,7 @@ BaTIS는 전량이 당연하고, BIMTS는 깊이를 고를 수 있다. 용량이
 
 1. **골격 생성** — 폴더, `requirements.txt`(duckdb, pandas, pyarrow, requests, openpyxl), `config/settings.yaml`. 인증키는 필요 없다(둘 다 공개, 키 불요).
 2. **`00_probe_source.py`** — 두 미러의 헤더·크기, BIMTS 관련 파일 목록(SDMX dataflow annotation에서 자동 추출), SDMX 판 정보를 찍고 `dim_edition` 후보 행을 만든다. 이 단계에서 이 문서 §1의 수치를 재확인한다.
-3. **1단계 수집·적재** — BaTIS zip 수집 → 해시 기록 → CSV 청크 읽기로 parquet 변환(2.98 GB를 한 번에 메모리에 올리지 않는다) → DuckDB 적재 → §6 BaTIS 검증 전항목 → 결과를 `docs/DB_구축_원칙.md`로 승격 작성.
+3. **1단계 수집·적재** — BaTIS zip 수집 → 해시 기록 → CSV 청크 읽기로 parquet 변환(2.98 GB를 한 번에 메모리에 올리지 않는다) → DuckDB 적재 → §6 BaTIS 검증 전항목 → 결과를 `docs/db-principles.md`로 승격 작성.
 4. **2단계 수집·적재** — BIMTS 2D + CPA 2.1. 같은 절차. 검증 M1·M2·M4·M5·M6.
 5. **현황·문서화** — `07_db_status.py`로 표 목록·행수·기간·출처를 자동 생성, README 작성.
 6. **(선택) 3·4단계** — 6D 파일 하나를 먼저 풀어 실측한 뒤 결정.
@@ -246,7 +246,7 @@ BaTIS는 전량이 당연하고, BIMTS는 깊이를 고를 수 있다. 용량이
 ## 10. 실행 중 밝혀진 정정 (2026-09-16 같은 날 수집 실행)
 
 계획을 세운 뒤 실제로 받아 보니 §1·§7의 몇 가지가 틀렸다. 확정 사실은
-`DB_구축_원칙.md`에 옮기고, 여기에는 계획이 어디서 어긋났는지만 남긴다.
+`db-principles.md`에 옮기고, 여기에는 계획이 어디서 어긋났는지만 남긴다.
 
 - **두 미러는 같은 파일이 아니다.** OECD판은 열 12개(성질 열 셋이 더 있다)에 **ISO3
   코드**(`KOR`)와 `EXP`/`IMP`, 방법론 37코드다. WTO판은 열 9개에 2자 코드(`KR`)와

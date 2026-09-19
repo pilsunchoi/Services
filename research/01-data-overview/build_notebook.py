@@ -1,9 +1,9 @@
-"""재현 노트북(overview.ipynb)을 만든다.
+"""재현 노트북(reproduce.ipynb)을 만든다.
 
 본문이 인용한 수치를 다시 계산하고 마지막 절에서 대조한다. 어긋나면 그 자리에서
 AssertionError로 멈춘다. 만든 뒤에는 nbconvert로 실행해 출력까지 담는다.
 
-  python research/1.서비스교역_자료와_기술적_개관/build_notebook.py
+  python research/01-data-overview/build_notebook.py
   jupyter nbconvert --to notebook --execute --inplace <노트북> --ExecutePreprocessor.kernel_name=kcsdb
 """
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 import nbformat as nbf
 
 HERE = Path(__file__).resolve().parent
-NB = HERE / "overview.ipynb"
+NB = HERE / "reproduce.ipynb"
 
 cells: list = []
 
@@ -29,7 +29,7 @@ def code(text: str) -> None:
 md("""
 # 서비스 교역 자료의 구조와 기술적 개관 — 재현 노트북
 
-`서비스교역_자료의_구조와_기술적_개관.md`가 인용하는 수치를 다시 계산한다.
+`paper.md`가 인용하는 수치를 다시 계산한다.
 마지막 절(§7)이 본문값과 대조하고 어긋나면 멈춘다.
 
 필요한 것은 `duckdb`, `pandas`, `matplotlib`와 이 저장소가 만든

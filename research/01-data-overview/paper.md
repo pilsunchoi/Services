@@ -4,7 +4,7 @@ OECD-WTO BaTIS와 OECD BIMTS, 그리고 한국의 서비스 교역 통계
 
 작성일: 2026-09-16
 자료: OECD-WTO BaTIS (BPM6, 2025-12판) · OECD BIMTS (2026-05 파일) · 한국은행 경제통계시스템
-재현: [`overview.ipynb`](overview.ipynb) · 수치 산출 [`analysis.py`](analysis.py)
+재현: [`reproduce.ipynb`](reproduce.ipynb) · 수치 산출 [`analysis.py`](analysis.py)
 
 ---
 
@@ -28,7 +28,7 @@ OECD와 WTO가 함께 만드는 BaTIS는 이 빈칸을 채워 완전한 행렬�
 
 ### 2. 범위와 규약
 
-분석은 이 저장소가 구축한 DuckDB(`svcdb.duckdb`)를 쓴다. 적재 절차와 검증 결과는 [`docs/DB_구축_원칙.md`](../../docs/DB_구축_원칙.md)에 있고, 이 문서가 인용하는 모든 수치는 [`analysis.py`](analysis.py)가 산출해 [`out/stats.json`](out/stats.json)에 남긴다. 금액은 원자료 단위인 백만 달러로 적되 세계 총계처럼 큰 값은 조 달러로 환산해 병기한다. 별도로 밝히지 않으면 서비스 금액은 균형치(`balanced_value`)이고 상품 금액은 재수출 조정 균형치(`B_ADJ_RX`)이며, 집계 코드(세계, EU27, OECD 등)는 제외한 개별 경제만 더한 값이다.
+분석은 이 저장소가 구축한 DuckDB(`svcdb.duckdb`)를 쓴다. 적재 절차와 검증 결과는 [`docs/db-principles.md`](../../docs/db-principles.md)에 있고, 이 문서가 인용하는 모든 수치는 [`analysis.py`](analysis.py)가 산출해 [`out/stats.json`](out/stats.json)에 남긴다. 금액은 원자료 단위인 백만 달러로 적되 세계 총계처럼 큰 값은 조 달러로 환산해 병기한다. 별도로 밝히지 않으면 서비스 금액은 균형치(`balanced_value`)이고 상품 금액은 재수출 조정 균형치(`B_ADJ_RX`)이며, 집계 코드(세계, EU27, OECD 등)는 제외한 개별 경제만 더한 값이다.
 
 용어는 원자료의 구분을 그대로 쓴다. 보고치는 통계당국이 실제로 보고한 값, 조정치는 거기에 추정과 조정을 더해 내부 정합을 맞춘 값, 균형치는 수출과 거울상 수입을 화해시킨 값이다. 영문 문헌의 reported, final, balanced에 대응한다.
 
@@ -308,6 +308,6 @@ SELECT max(abs(x.v - m.v)) FROM x JOIN m USING (a, b, i, y);
 
 ## 부록 B. 재현
 
-[`overview.ipynb`](overview.ipynb)가 이 문서의 모든 수치를 다시 계산하고 마지막 절에서 본문값과 대조한다. 어긋나면 그 자리에서 멈춘다. 필요한 것은 `duckdb`, `pandas`, `matplotlib`와 이 저장소가 만든 `data/processed/svcdb.duckdb`이며, DB를 만드는 절차는 [저장소 안내](../../README.md)에 있다. 한국은행 수치는 경제통계시스템 오픈API에서 받았고 인증키가 필요하므로 노트북에는 조회한 값을 상수로 적어 두었다.
+[`reproduce.ipynb`](reproduce.ipynb)가 이 문서의 모든 수치를 다시 계산하고 마지막 절에서 본문값과 대조한다. 어긋나면 그 자리에서 멈춘다. 필요한 것은 `duckdb`, `pandas`, `matplotlib`와 이 저장소가 만든 `data/processed/svcdb.duckdb`이며, DB를 만드는 절차는 [저장소 안내](../../README.md)에 있다. 한국은행 수치는 경제통계시스템 오픈API에서 받았고 인증키가 필요하므로 노트북에는 조회한 값을 상수로 적어 두었다.
 
 판이 바뀌면 수치도 바뀐다. 이 문서는 BaTIS 2025년 12월판과 BIMTS 2026년 5월 파일을 쓰며, 다른 판으로 같은 노트북을 돌리면 검증 절에서 멈춘다. 그때 필요한 것은 본문을 고치는 일이지 검증을 지우는 일이 아니다.

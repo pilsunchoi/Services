@@ -4,7 +4,7 @@
 파일 번호는 2026-09-16에 데이터버스 API로 확인한 값이다(데이터셋 판 39). 판이 바뀌면
 번호도 바뀌므로, 실패하면 데이터셋 페이지에서 새 번호를 찾아 고친다.
 
-  python research/2.지경학적_분절화와_서비스교역/fetch_unga.py
+  python research/02-fragmentation/fetch_unga.py
 """
 from __future__ import annotations
 

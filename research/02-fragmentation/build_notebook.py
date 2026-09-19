@@ -4,7 +4,7 @@
 분석 스크립트와 무관한 SQL로 따로 계산해 맞춰 본 뒤, 마지막 절에서 본문이 인용한 수치를
 대조한다. 어긋나면 AssertionError로 멈춘다.
 
-  python research/2.지경학적_분절화와_서비스교역/build_notebook.py
+  python research/02-fragmentation/build_notebook.py
   jupyter nbconvert --to notebook --execute --inplace <노트북> --ExecutePreprocessor.kernel_name=kcsdb
 """
 from __future__ import annotations
@@ -29,7 +29,7 @@ def code(t):
 md("""
 # 지경학적 분절화는 서비스 교역에서도 일어나는가 — 재현 노트북
 
-`지경학적_분절화와_서비스교역.md`의 수치와 그림을 다시 만든다.
+`paper.md`의 수치와 그림을 다시 만든다.
 
 1. `blocs.py`로 네 가지 블록 정의를 만들고
 2. `analysis.py`로 모든 수치(`out/stats.json`)와 그림(`img/`)을 만든 뒤
@@ -51,7 +51,7 @@ pd.set_option("display.width", 160)
 
 HERE = os.path.abspath(os.getcwd())
 while not os.path.exists(os.path.join(HERE, "analysis.py")) or "2.지경학적" not in HERE:
-    cand = os.path.join(HERE, "research", "2.지경학적_분절화와_서비스교역")
+    cand = os.path.join(HERE, "research", "02-fragmentation")
     if os.path.exists(cand):
         HERE = cand
         break

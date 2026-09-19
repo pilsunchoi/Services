@@ -2,7 +2,7 @@
 
 OECD-WTO **BaTIS**(Balanced Trade in Services)를 본체로, OECD **BIMTS**(Balanced
 International Merchandise Trade Statistics)를 짝으로 담은 DuckDB다. 설계 원칙은
-`docs/DB_구축_원칙.md`, 수집 계획과 그 정정 기록은 `docs/데이터_수집_계획.md`에 있다.
+`docs/db-principles.md`, 수집 계획과 그 정정 기록은 `docs/collection-plan.md`에 있다.
 
 대시보드는 `docs/index.html` 한 파일이다(개요 · DB 구축 · 균형화와 추정 · 데이터 함정 ·
 받기·사용 · 연구). GitHub Pages로 배포할 때는 source를 `main` 브랜치 `/docs`로 둔다.
@@ -58,13 +58,13 @@ con.execute("""
 만드는 스크립트를 함께 담는다. 노트북 마지막 절이 본문이 인용한 값을 다시 계산해
 대조하므로, 판이 바뀌어 숫자가 달라지면 그 자리에서 멈춘다.
 
-1. [서비스 교역 자료의 구조와 기술적 개관](research/1.서비스교역_자료와_기술적_개관/서비스교역_자료의_구조와_기술적_개관.md)
+1. [서비스 교역 자료의 구조와 기술적 개관](research/01-data-overview/paper.md)
    — BaTIS와 BIMTS의 구조, 국제·국내 자료와의 관계, 세계 규모와 보고 커버리지, 비대칭,
-   한국의 위치. [재현 노트북](research/1.서비스교역_자료와_기술적_개관/overview.ipynb)
-2. [지경학적 분절화는 서비스 교역에서도 일어나는가](research/2.지경학적_분절화와_서비스교역/지경학적_분절화와_서비스교역.md)
+   한국의 위치. [재현 노트북](research/01-data-overview/reproduce.ipynb)
+2. [지경학적 분절화는 서비스 교역에서도 일어나는가](research/02-fragmentation/paper.md)
    — 같은 국가쌍에서 상품과 서비스의 블록 간 교역 비중을 비교. 네 가지 블록 정의, 서비스 범주 분해,
-   교역망 구조. [재현 노트북](research/2.지경학적_분절화와_서비스교역/reproduce.ipynb). 이념점수 원자료는
-   `research/2.…/fetch_unga.py`가 받고, 상품 대조 계열(BACI)은 TradeNetworkAtlas 프로젝트의 DB를 읽는다.
+   교역망 구조. [재현 노트북](research/02-fragmentation/reproduce.ipynb). 이념점수 원자료는
+   `research/02-fragmentation/fetch_unga.py`가 받고, 상품 대조 계열(BACI)은 TradeNetworkAtlas 프로젝트의 DB를 읽는다.
 
 ## 파이프라인
 
