@@ -35,9 +35,9 @@
   },
   "report_rate": {
     "RUS_post": 0.0,
-    "RUS_pre": 96.5,
+    "USA_pre": 35.5,
     "USA_post": 94.0,
-    "USA_pre": 35.5
+    "RUS_pre": 96.5
   },
   "blocs": {
     "D1": {
