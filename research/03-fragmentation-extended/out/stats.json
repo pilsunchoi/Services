@@ -1,5 +1,7 @@
 {
   "idealpoint": {
+    "n_pre": 193,
+    "n_post": 192,
     "USA_pre": 2.44,
     "CHN_pre": -0.35,
     "mid_pre": 1.04,
@@ -7,13 +9,13 @@
     "KOR_pre": 0.86
   },
   "panel": {
-    "n_pairs": 9196,
-    "src_x": 5297,
+    "n_pairs": 9192,
+    "src_x": 5293,
     "src_m": 3862,
     "src_mixed": 37,
-    "n_economies": 201,
+    "n_economies": 200,
     "usa_chn_in": true,
-    "svc_cover_2019": 82.3,
+    "svc_cover_2019": 82.2,
     "svc_cover_2023": 83.8,
     "goods_cover_2019": 75.8,
     "goods_cover_2023": 74.1,
@@ -34,9 +36,9 @@
     }
   },
   "report_rate": {
+    "USA_post": 94.0,
     "RUS_post": 0.0,
     "USA_pre": 35.5,
-    "USA_post": 94.0,
     "RUS_pre": 96.5
   },
   "blocs": {
@@ -59,6 +61,32 @@
       "CN": 148,
       "US": 56
     },
+    "panel": {
+      "D1": {
+        "NON": 93,
+        "US": 54,
+        "CN": 51,
+        "none": 2
+      },
+      "D2": {
+        "NON": 93,
+        "US": 54,
+        "CN": 50,
+        "none": 3
+      },
+      "D3": {
+        "NON": 138,
+        "US": 54,
+        "CN": 8,
+        "none": 0
+      },
+      "D4": {
+        "CN": 144,
+        "US": 54,
+        "none": 2
+      }
+    },
+    "panel_n": 200,
     "d1_d2_switch": 88,
     "d1_d2_n": 203
   },
