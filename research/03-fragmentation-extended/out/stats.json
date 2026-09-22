@@ -36,10 +36,10 @@
     }
   },
   "report_rate": {
-    "USA_post": 94.0,
+    "RUS_pre": 96.5,
     "RUS_post": 0.0,
-    "USA_pre": 35.5,
-    "RUS_pre": 96.5
+    "USA_post": 94.0,
+    "USA_pre": 35.5
   },
   "blocs": {
     "D1": {
@@ -707,7 +707,8 @@
         "s_post": 21.74,
         "ds": 0.18,
         "composition": 0.63,
-        "within": 0.02
+        "within": 0.02,
+        "sum": 0.64
       },
       "기타": {
         "w_pre": 5.7,
@@ -716,7 +717,8 @@
         "s_post": 17.86,
         "ds": -2.84,
         "composition": -0.04,
-        "within": -0.16
+        "within": -0.16,
+        "sum": -0.2
       },
       "기타 디지털": {
         "w_pre": 46.97,
@@ -725,7 +727,8 @@
         "s_post": 15.72,
         "ds": -0.12,
         "composition": 0.34,
-        "within": -0.06
+        "within": -0.06,
+        "sum": 0.29
       },
       "여행": {
         "w_pre": 21.73,
@@ -734,7 +737,8 @@
         "s_post": 24.79,
         "ds": -3.04,
         "composition": -1.41,
-        "within": -0.58
+        "within": -0.58,
+        "sum": -1.99
       },
       "운송": {
         "w_pre": 16.74,
@@ -743,7 +747,8 @@
         "s_post": 26.38,
         "ds": 1.73,
         "composition": 0.13,
-        "within": 0.29
+        "within": 0.29,
+        "sum": 0.42
       },
       "_total": {
         "composition": -0.35,
@@ -759,7 +764,8 @@
         "s_post": 14.31,
         "ds": -0.47,
         "composition": 0.46,
-        "within": -0.04
+        "within": -0.04,
+        "sum": 0.42
       },
       "기타": {
         "w_pre": 6.47,
@@ -768,7 +774,8 @@
         "s_post": 25.21,
         "ds": -4.76,
         "composition": -0.09,
-        "within": -0.3
+        "within": -0.3,
+        "sum": -0.39
       },
       "기타 디지털": {
         "w_pre": 45.45,
@@ -777,7 +784,8 @@
         "s_post": 12.93,
         "ds": -1.88,
         "composition": 0.37,
-        "within": -0.88
+        "within": -0.88,
+        "sum": -0.52
       },
       "여행": {
         "w_pre": 22.71,
@@ -786,7 +794,8 @@
         "s_post": 20.53,
         "ds": -5.47,
         "composition": -1.37,
-        "within": -1.08
+        "within": -1.08,
+        "sum": -2.46
       },
       "운송": {
         "w_pre": 17.33,
@@ -795,7 +804,8 @@
         "s_post": 24.69,
         "ds": 0.61,
         "composition": 0.1,
-        "within": 0.11
+        "within": 0.11,
+        "sum": 0.21
       },
       "_total": {
         "composition": -0.53,
@@ -811,7 +821,8 @@
         "s_post": 10.47,
         "ds": 0.47,
         "composition": 0.3,
-        "within": 0.05
+        "within": 0.05,
+        "sum": 0.34
       },
       "기타": {
         "w_pre": 5.77,
@@ -820,7 +831,8 @@
         "s_post": 13.86,
         "ds": -3.25,
         "composition": -0.04,
-        "within": -0.18
+        "within": -0.18,
+        "sum": -0.22
       },
       "기타 디지털": {
         "w_pre": 47.98,
@@ -829,7 +841,8 @@
         "s_post": 9.49,
         "ds": -1.05,
         "composition": 0.23,
-        "within": -0.52
+        "within": -0.52,
+        "sum": -0.29
       },
       "여행": {
         "w_pre": 20.79,
@@ -838,7 +851,8 @@
         "s_post": 14.03,
         "ds": -6.96,
         "composition": -1.02,
-        "within": -1.25
+        "within": -1.25,
+        "sum": -2.26
       },
       "운송": {
         "w_pre": 17.22,
@@ -847,7 +861,8 @@
         "s_post": 19.78,
         "ds": 0.46,
         "composition": 0.17,
-        "within": 0.08
+        "within": 0.08,
+        "sum": 0.25
       },
       "_total": {
         "composition": -0.36,
@@ -863,7 +878,8 @@
         "s_post": 29.49,
         "ds": -0.95,
         "composition": 0.82,
-        "within": -0.09
+        "within": -0.09,
+        "sum": 0.72
       },
       "기타": {
         "w_pre": 6.24,
@@ -872,7 +888,8 @@
         "s_post": 38.04,
         "ds": 0.93,
         "composition": -0.0,
-        "within": 0.06
+        "within": 0.06,
+        "sum": 0.06
       },
       "기타 디지털": {
         "w_pre": 44.97,
@@ -881,7 +898,8 @@
         "s_post": 23.4,
         "ds": -0.72,
         "composition": 0.45,
-        "within": -0.33
+        "within": -0.33,
+        "sum": 0.12
       },
       "여행": {
         "w_pre": 22.6,
@@ -890,7 +908,8 @@
         "s_post": 38.03,
         "ds": -1.67,
         "composition": -2.15,
-        "within": -0.33
+        "within": -0.33,
+        "sum": -2.48
       },
       "운송": {
         "w_pre": 17.67,
@@ -899,7 +918,8 @@
         "s_post": 36.73,
         "ds": 1.09,
         "composition": 0.33,
-        "within": 0.2
+        "within": 0.2,
+        "sum": 0.52
       },
       "_total": {
         "composition": -0.56,
@@ -916,7 +936,8 @@
       "s_post": 21.74,
       "ds": 0.18,
       "composition": 0.65,
-      "within": 0.02
+      "within": 0.02,
+      "sum": 0.66
     },
     "기타": {
       "w_pre": 5.7,
@@ -925,7 +946,8 @@
       "s_post": 17.85,
       "ds": -2.85,
       "composition": -0.05,
-      "within": -0.16
+      "within": -0.16,
+      "sum": -0.21
     },
     "기타 디지털": {
       "w_pre": 46.97,
@@ -934,7 +956,8 @@
       "s_post": 15.62,
       "ds": -0.22,
       "composition": 0.32,
-      "within": -0.11
+      "within": -0.11,
+      "sum": 0.21
     },
     "여행": {
       "w_pre": 21.73,
@@ -943,7 +966,8 @@
       "s_post": 25.59,
       "ds": -2.23,
       "composition": -1.13,
-      "within": -0.44
+      "within": -0.44,
+      "sum": -1.57
     },
     "운송": {
       "w_pre": 16.74,
@@ -952,7 +976,8 @@
       "s_post": 25.93,
       "ds": 1.28,
       "composition": -0.13,
-      "within": 0.21
+      "within": 0.21,
+      "sum": 0.08
     },
     "_total": {
       "composition": -0.35,
