@@ -200,11 +200,9 @@ $S$의 하락이 교역 상대의 재편인지, 한 블록의 몫이 줄어서 �
 
 ### 1. 두 가설에 대한 답
 
-첫 번째 가설, 관세와 원산지 규정을 받지 않는 서비스에서는 분절화가 약하다는 가설에 대한 답은 측정 방식에 따라 달라진다. 블록 간 비중으로 측정하면 이 가설은 지지되지 않는다. 서비스의 비중 하락은 폭으로는 상품보다 조금 작지만 상대적 크기로는 같다. 다만 III.2절에서 적었듯이 두 하락은 모두 0과 구별되지 않으므로, 이 대목이 뒷받침하는 것은 서비스의 하락이 상품보다 작다는 증거가 없다는 데까지다. 블록별 몫의 변화를 통제한 집약도로 측정하면 이 가설과 맞는 결과가 나온다. 서비스에서는 몫의 변화를 넘는 재편이 보이지 않는다.[^3] 상품에서는 약하게 보이지만 그것도 재수출 조정 균형치에서만 나타나고 다른 두 상품 계열에서는 나타나지 않으며, 계열별 비교는 이 장의 3절에 있다. 두 측정이 다른 답을 내는 것은 서비스의 하락이 교역 상대의 재편이 아니라 중국 측 블록의 서비스 교역 위축에서, 구체적으로는 여행의 위축에서 나왔기 때문이다.
+첫 번째 가설, 관세와 원산지 규정을 받지 않는 서비스에서는 분절화가 약하다는 가설에 대한 답은 측정 방식에 따라 달라진다. 블록 간 비중으로 측정하면 이 가설은 지지되지 않는다. 서비스의 비중 하락은 폭으로는 상품보다 조금 작지만 상대적 크기로는 같다. 다만 III.2절에서 적었듯이 두 하락은 모두 0과 구별되지 않으므로, 이 대목이 뒷받침하는 것은 서비스의 하락이 상품보다 작다는 증거가 없다는 데까지다. 블록별 몫의 변화를 통제한 집약도로 측정하면 이 가설과 맞는 결과가 나온다. 서비스에서는 몫의 변화를 넘는 재편이 보이지 않는다. 상품에서는 약하게 보이지만 그것도 재수출 조정 균형치에서만 나타나고 다른 두 상품 계열에서는 나타나지 않으며, 계열별 비교는 이 장의 3절에 있다. 두 측정이 다른 답을 내는 것은 서비스의 하락이 교역 상대의 재편이 아니라 중국 측 블록의 서비스 교역 위축에서, 구체적으로는 여행의 위축에서 나왔기 때문이다.
 
 두 번째 가설, 디지털 서비스가 상품보다 먼저 분절된다는 가설은 이 자료에서 지지되지 않는다. ICT의 블록 간 비중은 변하지 않았고, 2018년 이후 데이터 규제가 늘어난 시기에도 추세가 없었다. 오히려 ICT 교역의 성장은 서비스 전체의 블록 간 비중을 높였다. 다만 이것이 디지털 서비스 규제가 효과가 없었다는 뜻은 아니다. BaTIS는 대분류에서 상대별 값의 보고 범위가 총서비스보다 좁다. 2019년 개별 경제 사이 균형치 가운데 어느 한쪽이라도 보고한 금액의 비중은 총서비스 88.0%, ICT 82.1%, 나머지 11개 대분류 77.5%다. 또한 규제가 가장 집중된 미중 사이의 디지털 교역은 금액이 작아 블록 전체의 비중에서 보이지 않을 수 있다.
-
-[^3]: 교역망의 군집 구조로도 같은 방향이 나온다. 2015\~2017년 서비스 교역 상위 80개 경제로 교역망을 만들고 간선 가중치를 두 방향 교역의 합에서 두 나라 총교역의 기하평균으로 나눈 뒤 블록 구분을 그대로 적용하면, 가중 모듈러리티(Newman and Girvan, 2004)는 상품에서 2012년 0.069에서 2024년 0.109로 올랐고 서비스는 전 기간 0.081\~0.090에 머물러 추세가 없다. 상품의 이 상승은 2022년이 아니라 2012년 이후 장기간 진행되었다. 다만 이 계산만은 표본이 아니라 자료의 모든 흐름을 쓴다. 상위 80개 경제가 이룰 수 있는 유향 쌍 6,320개 가운데 표본에 드는 것이 3,590개(56.8%)뿐인데, 모듈러리티는 간선이 없는 것과 교역이 없는 것을 구분하지 못해 빠진 흐름이 교역이 없는 자리로 들어가기 때문이다. 두 교역 모두 모듈러리티의 절대 수준은 낮다.
 
 ### 2. 블록 정의의 선택과 대체안
 
@@ -282,7 +280,6 @@ BaTIS는 결측 추정과 대칭지수 가중평균을 거치고, BIMTS는 품�
 - Drysdale, P., and R. Garnaut (1982), "Trade Intensities and the Analysis of Bilateral Trade Flows in a Many-Country World: A Survey," *Hitotsubashi Journal of Economics* 22, 62–84.
 - Gaulier, G., and S. Zignago (2010), "BACI: International Trade Database at the Product-Level. The 1994-2007 Version," CEPII Working Paper 2010-23.
 - Gopinath, G., P.-O. Gourinchas, A. F. Presbitero, and P. Topalova (2025), "Changing Global Linkages: A New Cold War?" *Journal of International Economics* 153.
-- Newman, M. E. J., and M. Girvan (2004), "Finding and Evaluating Community Structure in Networks," *Physical Review E* 69, 026113.
 - OECD and WTO (2025), *The OECD-WTO Balanced Trade in Services Database (BaTIS)*, OECD Publishing.
 - OECD (2025), *The OECD Balanced International Merchandise Trade Dataset (BIMTS)*, OECD Publishing.
 - WTO (2023), *World Trade Report 2023: Re-globalization for a Secure, Inclusive and Sustainable Future*, World Trade Organization.
