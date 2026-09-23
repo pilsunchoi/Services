@@ -30,7 +30,7 @@ Does Geoeconomic Fragmentation Extend to Services Trade?
 
 ### 1. 교역 자료와 분석 표본
 
-서비스는 BaTIS(OECD and WTO, 2025)의 총서비스와 12개 대분류를, 상품은 BIMTS(OECD, 2025)의 전 품목 합계를 쓴다. 모두 백만 달러 단위이고 세계나 EU처럼 여러 경제를 묶은 집계 항목은 빼고 개별 경제만 남긴다. 자료가 개별 경제로 분류하는 코드 가운데 나머지 세계(rest of the world)는 보고되지 않은 상대를 묶은 잔여 항목이므로 함께 뺀다. BaTIS는 한 흐름을 수출국이 보고한 수출 행과 수입국이 보고한 수입 행 두 개에 담으므로, 수출 방향 행을 관측으로 삼아 한 흐름을 한 번만 세고 수입 행의 값은 그 흐름의 수입국 보고로 붙여 둔다. 문헌에서는 이것을 거울상 통계(mirror statistics)라 부른다. 반면 BIMTS는 원래 수출국 기준의 단일 기록이다.
+서비스는 BaTIS(OECD and WTO, 2025)의 총서비스와 12개 대분류를, 상품은 BIMTS(OECD, 2026)의 전 품목 합계를 쓴다. 모두 백만 달러 단위이고 세계나 EU처럼 여러 경제를 묶은 집계 항목은 빼고 개별 경제만 남긴다. 자료가 개별 경제로 분류하는 코드 가운데 나머지 세계(rest of the world)는 보고되지 않은 상대를 묶은 잔여 항목이므로 함께 뺀다. BaTIS는 한 흐름을 수출국이 보고한 수출 행과 수입국이 보고한 수입 행 두 개에 담으므로, 수출 방향 행을 관측으로 삼아 한 흐름을 한 번만 세고 수입 행의 값은 그 흐름의 수입국 보고로 붙여 둔다. 문헌에서는 이것을 거울상 통계(mirror statistics)라 부른다. 반면 BIMTS는 원래 수출국 기준의 단일 기록이다.
 
 두 자료가 싣는 금액은 균형치(balanced value)다. 균형치는 수출국 보고와 수입국 보고의 차이를 조정하고 보고가 없는 칸은 추정해, 세계 합이 맞아떨어지도록 만든 값이다. 그렇게 만드는 절차를 균형화라 한다. 상품은 재수출을 생산국으로 재배분한 균형치를 쓴다. 재수출(re-export)은 들여온 물건을 실질적인 가공 없이 다시 내보내는 것으로, 통관 기록은 마지막으로 내보낸 나라를 수출국으로 적는다. 따라서 중국산 제품이 홍콩을 거쳐 미국으로 가면 원자료에는 홍콩의 대미 수출로 기록되지만, 본 연구가 쓰는 상품 계열인 "재수출 조정 균형치"에서는 그 금액이 중국의 대미 수출로 돌아간다.
 
@@ -281,9 +281,9 @@ $S$의 하락이 교역 상대의 재편에서 온 것인지, 두 블록의 몫�
 - Airaudo, F. S., F. de Soyres, K. Richards, and A. M. Santacreu (2025), "Fragmentation? Revisiting the Ideal Point Distance Measure of Geopolitical Distance," FEDS Notes, Board of Governors of the Federal Reserve System, March 21.
 - Aiyar, S., J. Chen, C. Ebeke, R. Garcia-Saltos, T. Gudmundsson, A. Ilyina, A. Kangur, T. Kunaratskul, S. Rodriguez, M. Ruta, T. Schulze, G. Soderberg, and J. Trevino (2023), "Geoeconomic Fragmentation and the Future of Multilateralism," IMF Staff Discussion Note SDN/2023/001.
 - Bailey, M. A., A. Strezhnev, and E. Voeten (2017), "Estimating Dynamic State Preferences from United Nations Voting Data," *Journal of Conflict Resolution* 61(2), 430–456.
-- Drysdale, P., and R. Garnaut (1982), "Trade Intensities and the Analysis of Bilateral Trade Flows in a Many-Country World: A Survey," *Hitotsubashi Journal of Economics* 22, 62–84.
+- Drysdale, P., and R. Garnaut (1982), "Trade Intensities and the Analysis of Bilateral Trade Flows in a Many-Country World: A Survey," *Hitotsubashi Journal of Economics* 22(2), 62–84.
 - Gaulier, G., and S. Zignago (2010), "BACI: International Trade Database at the Product-Level. The 1994-2007 Version," CEPII Working Paper 2010-23.
-- Gopinath, G., P.-O. Gourinchas, A. F. Presbitero, and P. Topalova (2025), "Changing Global Linkages: A New Cold War?" *Journal of International Economics* 153.
-- OECD and WTO (2025), *The OECD-WTO Balanced Trade in Services Database (BaTIS)*, OECD Publishing.
-- OECD (2025), *The OECD Balanced International Merchandise Trade Dataset (BIMTS)*, OECD Publishing.
+- Gopinath, G., P.-O. Gourinchas, A. F. Presbitero, and P. Topalova (2025), "Changing Global Linkages: A New Cold War?" *Journal of International Economics* 153, 104042.
+- OECD and WTO (2025), *The OECD-WTO Balanced Trade in Services Database (BaTIS)*, December 2025 edition, OECD Publishing.
+- OECD (2026), *The OECD Balanced International Merchandise Trade Dataset (BIMTS)*, May 2026 edition, OECD Publishing.
 - WTO (2023), *World Trade Report 2023: Re-globalization for a Secure, Inclusive and Sustainable Future*, World Trade Organization.
