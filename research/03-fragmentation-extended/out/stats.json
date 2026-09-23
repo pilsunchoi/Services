@@ -36,10 +36,10 @@
     }
   },
   "report_rate": {
-    "RUS_pre": 96.5,
+    "USA_pre": 35.5,
     "RUS_post": 0.0,
     "USA_post": 94.0,
-    "USA_pre": 35.5
+    "RUS_pre": 96.5
   },
   "blocs": {
     "D1": {
@@ -103,7 +103,11 @@
       "dlogodds_post": -0.052,
       "I_pre": 0.856,
       "I_post": 0.871,
-      "dI_pct": 1.71
+      "dI_pct": 1.71,
+      "x_pre": 87.94,
+      "m_pre": 84.02,
+      "x_post": 88.15,
+      "m_post": 85.62
     },
     "D1|svc_rep": {
       "S_early": 17.33,
@@ -117,7 +121,11 @@
       "dlogodds_post": -0.104,
       "I_pre": 0.909,
       "I_post": 0.975,
-      "dI_pct": 7.29
+      "dI_pct": 7.29,
+      "x_pre": 90.02,
+      "m_pre": 86.58,
+      "x_post": 91.37,
+      "m_post": 88.99
     },
     "D1|goods_rx": {
       "S_early": 31.14,
@@ -131,7 +139,11 @@
       "dlogodds_post": -0.048,
       "I_pre": 1.016,
       "I_post": 1.001,
-      "dI_pct": -1.39
+      "dI_pct": -1.39,
+      "x_pre": 79.18,
+      "m_pre": 82.71,
+      "x_post": 79.03,
+      "m_post": 83.88
     },
     "D1|goods_b": {
       "S_early": 31.19,
@@ -145,7 +157,11 @@
       "dlogodds_post": -0.038,
       "I_pre": 0.965,
       "I_post": 0.974,
-      "dI_pct": 1.01
+      "dI_pct": 1.01,
+      "x_pre": 77.79,
+      "m_pre": 80.95,
+      "x_post": 78.06,
+      "m_post": 82.71
     },
     "D1|goods_baci": {
       "S_early": 32.43,
@@ -159,7 +175,11 @@
       "dlogodds_post": -0.019,
       "I_pre": 0.988,
       "I_post": 0.995,
-      "dI_pct": 0.7
+      "dI_pct": 0.7,
+      "x_pre": 76.65,
+      "m_pre": 81.4,
+      "x_post": 76.7,
+      "m_post": 82.58
     },
     "D2|svc_bal": {
       "S_early": 19.48,
@@ -173,7 +193,11 @@
       "dlogodds_post": -0.181,
       "I_pre": 0.818,
       "I_post": 0.805,
-      "dI_pct": -1.53
+      "dI_pct": -1.53,
+      "x_pre": 88.75,
+      "m_pre": 83.06,
+      "x_post": 89.68,
+      "m_post": 86.09
     },
     "D2|svc_rep": {
       "S_early": 16.72,
@@ -187,7 +211,11 @@
       "dlogodds_post": -0.258,
       "I_pre": 0.85,
       "I_post": 0.898,
-      "dI_pct": 5.66
+      "dI_pct": 5.66,
+      "x_pre": 90.33,
+      "m_pre": 85.71,
+      "x_post": 92.59,
+      "m_post": 89.73
     },
     "D2|goods_rx": {
       "S_early": 35.21,
@@ -201,7 +229,11 @@
       "dlogodds_post": -0.094,
       "I_pre": 1.027,
       "I_post": 0.985,
-      "dI_pct": -4.09
+      "dI_pct": -4.09,
+      "x_pre": 76.23,
+      "m_pre": 82.22,
+      "x_post": 76.01,
+      "m_post": 83.83
     },
     "D2|goods_b": {
       "S_early": 35.15,
@@ -215,7 +247,11 @@
       "dlogodds_post": -0.079,
       "I_pre": 0.98,
       "I_post": 0.961,
-      "dI_pct": -1.99
+      "dI_pct": -1.99,
+      "x_pre": 74.91,
+      "m_pre": 80.49,
+      "x_post": 75.05,
+      "m_post": 82.57
     },
     "D2|goods_baci": {
       "S_early": 36.38,
@@ -229,7 +265,11 @@
       "dlogodds_post": -0.069,
       "I_pre": 1.0,
       "I_post": 0.98,
-      "dI_pct": -1.97
+      "dI_pct": -1.97,
+      "x_pre": 73.86,
+      "m_pre": 80.72,
+      "x_post": 73.7,
+      "m_post": 82.81
     },
     "D3|svc_bal": {
       "S_early": 14.05,
@@ -243,7 +283,11 @@
       "dlogodds_post": -0.187,
       "I_pre": 0.773,
       "I_post": 0.767,
-      "dI_pct": -0.73
+      "dI_pct": -0.73,
+      "x_pre": 91.47,
+      "m_pre": 87.57,
+      "x_post": 92.29,
+      "m_post": 90.04
     },
     "D3|svc_rep": {
       "S_early": 11.72,
@@ -257,7 +301,11 @@
       "dlogodds_post": -0.22,
       "I_pre": 0.816,
       "I_post": 0.889,
-      "dI_pct": 8.92
+      "dI_pct": 8.92,
+      "x_pre": 93.09,
+      "m_pre": 89.93,
+      "x_post": 94.63,
+      "m_post": 92.81
     },
     "D3|goods_rx": {
       "S_early": 28.51,
@@ -271,7 +319,11 @@
       "dlogodds_post": -0.135,
       "I_pre": 1.036,
       "I_post": 1.023,
-      "dI_pct": -1.24
+      "dI_pct": -1.24,
+      "x_pre": 81.62,
+      "m_pre": 85.88,
+      "x_post": 83.04,
+      "m_post": 87.76
     },
     "D3|goods_b": {
       "S_early": 28.62,
@@ -285,7 +337,11 @@
       "dlogodds_post": -0.123,
       "I_pre": 0.973,
       "I_post": 0.983,
-      "dI_pct": 1.1
+      "dI_pct": 1.1,
+      "x_pre": 80.26,
+      "m_pre": 84.02,
+      "x_post": 82.09,
+      "m_post": 86.45
     },
     "D3|goods_baci": {
       "S_early": 29.53,
@@ -299,7 +355,11 @@
       "dlogodds_post": -0.12,
       "I_pre": 0.994,
       "I_post": 0.999,
-      "dI_pct": 0.42
+      "dI_pct": 0.42,
+      "x_pre": 79.42,
+      "m_pre": 84.4,
+      "x_post": 81.11,
+      "m_post": 86.65
     },
     "D4|svc_bal": {
       "S_early": 30.86,
@@ -313,7 +373,11 @@
       "dlogodds_post": -0.05,
       "I_pre": 0.974,
       "I_post": 0.987,
-      "dI_pct": 1.35
+      "dI_pct": 1.35,
+      "x_pre": 83.05,
+      "m_pre": 77.45,
+      "x_post": 82.96,
+      "m_post": 79.79
     },
     "D4|svc_rep": {
       "S_early": 27.76,
@@ -327,7 +391,11 @@
       "dlogodds_post": -0.098,
       "I_pre": 0.999,
       "I_post": 1.043,
-      "dI_pct": 4.35
+      "dI_pct": 4.35,
+      "x_pre": 85.21,
+      "m_pre": 79.99,
+      "x_post": 86.6,
+      "m_post": 83.07
     },
     "D4|goods_rx": {
       "S_early": 45.18,
@@ -341,7 +409,11 @@
       "dlogodds_post": -0.058,
       "I_pre": 1.109,
       "I_post": 1.072,
-      "dI_pct": -3.39
+      "dI_pct": -3.39,
+      "x_pre": 70.39,
+      "m_pre": 74.77,
+      "x_post": 69.29,
+      "m_post": 76.02
     },
     "D4|goods_b": {
       "S_early": 44.96,
@@ -355,7 +427,11 @@
       "dlogodds_post": -0.048,
       "I_pre": 1.081,
       "I_post": 1.058,
-      "dI_pct": -2.13
+      "dI_pct": -2.13,
+      "x_pre": 69.35,
+      "m_pre": 73.6,
+      "x_post": 68.5,
+      "m_post": 75.27
     },
     "D4|goods_baci": {
       "S_early": 46.19,
@@ -369,7 +445,11 @@
       "dlogodds_post": -0.036,
       "I_pre": 1.098,
       "I_post": 1.077,
-      "dI_pct": -1.92
+      "dI_pct": -1.92,
+      "x_pre": 68.05,
+      "m_pre": 73.72,
+      "x_post": 66.86,
+      "m_post": 75.44
     }
   },
   "annual_D1": {
