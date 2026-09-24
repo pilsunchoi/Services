@@ -69,7 +69,7 @@ con.execute("""
    저장소의 DB를 읽는다. 확장판(옛 연구 3)은 저장소에서 내렸고 태그 `archive/03-fragmentation-extended`로 연다.
 3. [디지털 서비스 교역에서 거리의 효과는 약해졌는가](research/03-digital-distance/paper.md)
    — 상대국별 보고치가 있는 교역만으로 범주별 거리 탄력성의 수준과 2010\~2023년 변화를 PPML로
-   추정한다. 추정으로 채운 값까지 포함한 전체 표본과의 차이도 제시한다.
+   추정한다.
    [재현 노트북](research/03-digital-distance/reproduce.ipynb) 하나에 표본 구성부터 검증까지 다 들어
    있다. 거리와 통제변수는 CEPII Gravity V202211(`data/external/cepii-gravity/`)에서 가져온다.
 
