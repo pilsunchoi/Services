@@ -71,6 +71,11 @@ con.execute("""
    [재현 노트북](research/03-fragmentation-extended/reproduce.ipynb) 하나에 블록 정의부터
    그림까지 다 들어 있다. 이념점수 원자료는 노트북이 하버드 데이터버스에서 받고, 상품 대조 계열(BACI)은
    TradeNetworkAtlas 프로젝트의 DB를 읽는다. 완결은 보류 중이다.
+4. [디지털 서비스 교역에서 거리의 효과는 약해졌는가](research/04-digital-distance/paper.md)
+   — 상대국별 보고치가 있는 교역만으로 범주별 거리 탄력성의 수준과 2010\~2023년 변화를 PPML로
+   추정한다. 추정으로 채운 값까지 포함한 전체 표본과의 차이도 제시한다.
+   [재현 노트북](research/04-digital-distance/reproduce.ipynb) 하나에 표본 구성부터 검증까지 다 들어
+   있다. 거리와 통제변수는 CEPII Gravity V202211(`data/external/cepii-gravity/`)에서 가져온다.
 
 ## 파이프라인
 
@@ -86,7 +91,9 @@ python scripts/06_validate.py                 # 무결성 검증 (PASS/WARN/FAIL
 python scripts/07_db_status.py                # 현황
 ```
 
-필요한 패키지는 `requirements.txt`의 넷이면 된다 — conda나 특정 파이썬 버전은 필요 없다.
+필요한 패키지는 `requirements.txt`에 있다 — conda나 특정 파이썬 버전은 필요 없다. DB 구축에는
+`duckdb`·`pandas`·`pyarrow`·`requests`·`openpyxl` 다섯이면 된다. `matplotlib`은 연구의 재현 노트북이
+그림을 그리는 데, `pyfixest`는 연구 4의 추정에만 쓴다.
 
 `data/raw/<dataset>/<edition>/`에 받은 zip 원본과 `manifest.json`(URL·크기·sha256·시각)이
 남는다. **OECD는 새 판을 내며 URL을 그대로 두므로 이 사본이 판을 특정하는 유일한
