@@ -62,7 +62,7 @@ con.execute("""
    — BaTIS와 BIMTS의 구조, 국제·국내 자료와의 관계, 세계 규모와 보고 커버리지, 비대칭,
    한국의 위치. [재현 노트북](research/01-data-overview/reproduce.ipynb)
 2. [지경학적 분절화는 서비스 교역에서도 일어나는가](research/02-fragmentation/paper.md)
-   — 같은 국가쌍에서 상품과 서비스의 블록 간 교역 비중을 비교한 투고본. 기준안 블록과 기준 계열 둘로
+   — 같은 나라쌍에서 상품과 서비스의 블록 간 교역 비중을 비교한 투고본. 기준안 블록과 기준 계열 둘로
    측정하고 대체 블록 정의 세 가지와 교역 계열 다섯 가지로 확인한다. 서비스 범주 분해, 교역집약도.
    [재현 노트북](research/02-fragmentation/reproduce.ipynb) 하나가 블록 정의부터 본문 수치 대조까지
    한다. 이념점수 원자료는 노트북이 하버드 데이터버스에서 받고, 상품 대조 계열(BACI)은 UNComtraade
