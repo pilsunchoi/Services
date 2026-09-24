@@ -62,19 +62,15 @@ con.execute("""
    — BaTIS와 BIMTS의 구조, 국제·국내 자료와의 관계, 세계 규모와 보고 커버리지, 비대칭,
    한국의 위치. [재현 노트북](research/01-data-overview/reproduce.ipynb)
 2. [지경학적 분절화는 서비스 교역에서도 일어나는가](research/02-fragmentation/paper.md)
-   — 같은 국가쌍에서 상품과 서비스의 블록 간 교역 비중을 비교. 기준안 블록 하나와 기준 계열 둘로
-   좁힌 투고본이다. 서비스 범주 분해, 교역집약도, 교역망 구조.
-   [재현 노트북](research/02-fragmentation/reproduce.ipynb)은 연구 3의 산출물을 읽어 그림을
-   다시 그리고 본문 수치를 대조한다.
-3. [서비스 교역의 지경학적 분절화는 측정 선택에 좌우되는가](research/03-fragmentation-extended/paper.md)
-   — 연구 2를 네 가지 블록 정의와 다섯 가지 교역 계열로 넓혀 측정 선택이 결론을 바꾸는지 본다.
-   [재현 노트북](research/03-fragmentation-extended/reproduce.ipynb) 하나에 블록 정의부터
-   그림까지 다 들어 있다. 이념점수 원자료는 노트북이 하버드 데이터버스에서 받고, 상품 대조 계열(BACI)은
-   TradeNetworkAtlas 프로젝트의 DB를 읽는다. 완결은 보류 중이다.
-4. [디지털 서비스 교역에서 거리의 효과는 약해졌는가](research/04-digital-distance/paper.md)
+   — 같은 국가쌍에서 상품과 서비스의 블록 간 교역 비중을 비교한 투고본. 기준안 블록과 기준 계열 둘로
+   측정하고 대체 블록 정의 세 가지와 교역 계열 다섯 가지로 확인한다. 서비스 범주 분해, 교역집약도.
+   [재현 노트북](research/02-fragmentation/reproduce.ipynb) 하나가 블록 정의부터 본문 수치 대조까지
+   한다. 이념점수 원자료는 노트북이 하버드 데이터버스에서 받고, 상품 대조 계열(BACI)은 UNComtraade
+   저장소의 DB를 읽는다. 확장판(옛 연구 3)은 저장소에서 내렸고 태그 `archive/03-fragmentation-extended`로 연다.
+3. [디지털 서비스 교역에서 거리의 효과는 약해졌는가](research/03-digital-distance/paper.md)
    — 상대국별 보고치가 있는 교역만으로 범주별 거리 탄력성의 수준과 2010\~2023년 변화를 PPML로
    추정한다. 추정으로 채운 값까지 포함한 전체 표본과의 차이도 제시한다.
-   [재현 노트북](research/04-digital-distance/reproduce.ipynb) 하나에 표본 구성부터 검증까지 다 들어
+   [재현 노트북](research/03-digital-distance/reproduce.ipynb) 하나에 표본 구성부터 검증까지 다 들어
    있다. 거리와 통제변수는 CEPII Gravity V202211(`data/external/cepii-gravity/`)에서 가져온다.
 
 ## 파이프라인
@@ -93,7 +89,7 @@ python scripts/07_db_status.py                # 현황
 
 필요한 패키지는 `requirements.txt`에 있다 — conda나 특정 파이썬 버전은 필요 없다. DB 구축에는
 `duckdb`·`pandas`·`pyarrow`·`requests`·`openpyxl` 다섯이면 된다. `matplotlib`은 연구의 재현 노트북이
-그림을 그리는 데, `pyfixest`는 연구 4의 추정에만 쓴다.
+그림을 그리는 데, `pyfixest`는 연구 3의 추정에만 쓴다.
 
 `data/raw/<dataset>/<edition>/`에 받은 zip 원본과 `manifest.json`(URL·크기·sha256·시각)이
 남는다. **OECD는 새 판을 내며 URL을 그대로 두므로 이 사본이 판을 특정하는 유일한
