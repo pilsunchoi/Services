@@ -1,6 +1,6 @@
-# 디지털 서비스 교역에서 거리 효과의 지속
+# 디지털 서비스 교역에서 거리의 효과는 약해졌는가
 
-The Persistence of the Distance Effect in Digital Services Trade
+Has the Distance Effect Weakened in Digital Services Trade?
 
 작성일: 2026-09-26
 
