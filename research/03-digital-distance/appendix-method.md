@@ -74,7 +74,15 @@ $$\sum_{i,j} \left( X_{ij} - \exp(x_{ij}'\hat{b}) \right) x_{ij} = 0$$
 
 표준오차는 표본이 달라질 때 추정치가 변동하는 정도를 나타낸다. 보통의 계산은 관측마다 오차가 서로 독립이라고 가정한다. 그러나 한국에서 미국으로의 서비스 수출에서 모형이 설명하지 못한 부분, 즉 오차 $\varepsilon_{ijt}$는 2015년과 2016년에 서로 비슷할 가능성이 크다. 두 나라 사이의 관계, 거래 기업, 기존 계약처럼 모형에 포함되지 않은 요인이 해마다 크게 바뀌지 않기 때문이다. 같은 나라쌍의 14년 관측은 14개의 독립된 정보가 아니므로, 독립으로 가정해 계산하면 표준오차가 과소 추정되어 유의하지 않은 결과가 유의하게 나타난다.
 
+이 과소 추정이 얼마나 클 수 있는지는 간단한 예로 가늠할 수 있다. 같은 나라쌍의 14년 관측의 오차가 서로 0.5의 상관을 갖고, 설명변수도 거리처럼 나라쌍 안에서 해마다 같다고 하자. 그러면 계수 추정치의 실제 분산은 독립을 가정해 계산한 분산의 $1 + (m-1)\rho = 1 + 13 \times 0.5 = 7.5$배이고, 표준오차는 약 2.7배다. 여기서 $m$은 군집 하나의 관측 수, $\rho$는 군집 안 오차의 상관이다(Moulton, 1990). 이를 정보의 양으로 바꾸어 말하면, 같은 나라쌍의 14년 관측은 서로 비슷한 내용을 되풀이하므로 독립된 관측 2개가 채 안 되는 정보밖에 주지 않는데, 독립을 가정한 계산은 이를 14개의 독립된 정보로 센다. 거리처럼 나라쌍마다 값이 고정된 변수의 계수에서 이 문제가 특히 크다.
+
 나라쌍으로 군집한 표준오차는 같은 나라쌍의 관측끼리는 오차가 임의의 형태로 상관될 수 있고 서로 다른 나라쌍끼리만 독립이라고 가정해 계산한다. 추정량의 분산을 구할 때 관측별 기여를 먼저 군집 안에서 합한 뒤, 그 합의 제곱을 군집 사이에서 더한다. 이 계산은 군집의 수가 충분히 많아야 정확한데, 본문의 표본은 범주마다 수천 개의 나라쌍으로 이루어져 이 조건을 충족한다. 본문에서 나라쌍은 수출국과 수입국의 순서쌍이므로 한국에서 미국으로의 수출과 미국에서 한국으로의 수출은 서로 다른 군집이고, 두 방향 사이의 오차 상관은 반영되지 않는다. 본문의 모든 추정은 이렇게 군집한 표준오차를 쓴다.
+
+이 계산을 식으로 적으면 다음과 같다. 나라쌍을 $g = 1, \dots, G$로, 나라쌍 $g$에 속한 관측의 집합을 $\mathcal{T}_{g}$로 적는다. II.3절의 1계 조건에서 관측 하나가 기여하는 항을 $s_{ijt} = (X_{ijt} - \hat{\mu}_{ijt})\, x_{ijt}$, $\hat{\mu}_{ijt} = \exp(x_{ijt}'\hat{b})$라 하면, 나라쌍으로 군집한 분산의 추정량은 다음과 같다.
+
+$$\widehat{\mathrm{Var}}(\hat{b}) = \hat{H}^{-1} \left( \sum_{g=1}^{G} \hat{s}_{g} \hat{s}_{g}' \right) \hat{H}^{-1}, \quad \hat{s}_{g} = \sum_{(i,j,t) \in \mathcal{T}_{g}} s_{ijt}, \quad \hat{H} = \sum_{i,j,t} \hat{\mu}_{ijt}\, x_{ijt} x_{ijt}'$$
+
+양쪽의 $\hat{H}^{-1}$은 우도의 곡률이고, 가운데 항이 관측별 기여를 군집 안에서 먼저 더한 뒤 제곱해 군집 사이에서 더하는 부분이다. 이 꼴 때문에 샌드위치 추정량이라고도 부른다. 관측마다 독립이라고 가정하면 가운데 항이 $\sum s_{ijt} s_{ijt}'$가 되어, 같은 군집 안의 서로 다른 해의 곱 $s_{ijt} s_{ijt'}'$이 빠진다. 군집 안의 오차가 양의 상관을 가지면 이 교차곱의 합이 양수이므로, 군집하지 않은 표준오차는 실제보다 작게 계산된다. 이 추정량은 군집의 수 $G$가 커질 때 일치성을 가지며, 군집 안의 상관 형태에는 제약을 두지 않는다(Cameron and Miller, 2015).
 
 ---
 
@@ -196,10 +204,12 @@ $\beta^{\Delta}$가 양수이면 디지털 범주의 거리 탄력성이 비교 
 
 ## 참고문헌
 
+- Cameron, A. C., and D. L. Miller (2015), "A Practitioner's Guide to Cluster-Robust Inference," *Journal of Human Resources* 50(2), 317–372.
 - Conte, M., P. Cotterlaz, and T. Mayer (2022), "The CEPII Gravity Database," CEPII Working Paper 2022-05.
 - Correia, S., P. Guimarães, and T. Zylkin (2020), "Fast Poisson Estimation with High-Dimensional Fixed Effects," *Stata Journal* 20(1), 95–115.
 - Head, K., T. Mayer, and J. Ries (2009), "How Remote Is the Offshoring Threat?" *European Economic Review* 53(4), 429–444.
 - Li, N., S. Meleshchuk, Q. Yin, D. Zhao, and R. Zymek (2025), "Bilateral Trade in Services: Insights from A New Research Dataset," IMF Working Paper WP/25/163, International Monetary Fund.
+- Moulton, B. R. (1990), "An Illustration of a Pitfall in Estimating the Effects of Aggregate Variables on Micro Units," *Review of Economics and Statistics* 72(2), 334–338.
 - Santos Silva, J. M. C., and S. Tenreyro (2006), "The Log of Gravity," *Review of Economics and Statistics* 88(4), 641–658.
 - The PyFixest Authors (2025), *pyfixest: Fast High-Dimensional Fixed Effect Estimation in Python*, version 0.60.0, https://github.com/py-econometrics/pyfixest.
 - Yotov, Y. V. (2012), "A Simple Solution to the Distance Puzzle in International Trade," *Economics Letters* 117(3), 794–798.
